@@ -1,0 +1,224 @@
+% !TeX program = xelatex
+
+\documentclass[a4paper,12pt,twoside]{book}
+\usepackage[T1]{fontenc}
+\usepackage{inputenc}
+\usepackage{fontspec}
+\usepackage{lmodern}
+\usepackage[english,french]{babel}
+\usepackage{xspace} % pour la gestion des espaces après les commandes
+
+\usepackage{csquotes} % Gestion des guillemets dans la biblio
+\usepackage[xetex]{graphicx} %Package pour gérer les images
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Mise en page École des chartes
+\usepackage[margin=2.5cm]{geometry} % marges
+\usepackage{setspace}
+\onehalfspacing % interligne de 1.5
+\setlength\parindent{1cm}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\usepackage{tocbibind}
+\usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
+\addbibresource{bibliographie/bibliographie.bib}
+\nocite{*}
+\defbibnote{intro}{Cette bibliographie présente toutes les ressources utilisées, de tout type, citées ou non, par simple ordre alphabétique.}
+
+\usepackage[pdfusetitle, pdfsubject={Mémoire TNAH — Le traitement des sources historiques par la vision artificielle}, pdfkeywords={vision artificielle, histoire de l'astronomie, développement applicatif}]{hyperref}
+
+\author{Prénom Nom – M2 TNAH — ENC}
+\title{Titre mémoire}
+
+% ACRONYMS
+\usepackage[automake, acronym, toc]{glossaries}
+\makeglossaries
+\setacronymstyle{short-long}
+\newacronym{api}{\textsc{api}}{\emph{Application Programming Interface}}
+\newacronym{eida}{\textsc{eida}}{\emph{Editing and analysing hIstorical astronomical Diagrams with Artificial intelligence}}
+\newacronym{dishas}{\textsc{dishas}}{\emph{Digital Information System for the History of Astral Sciences}}
+\newacronym{dti}{\textsc{dti}}{\emph{DISHAS Table Interface}}
+\newacronym{dips}{\textsc{dips}}{\emph{DISHAS Interactive Parameter Squeezer}}
+\newacronym{xml}{\textsc{xml}}{\emph{eXtensible Markup Language}}
+\newacronym{csv}{\textsc{csv}}{\emph{Comma-separated values}}
+\newacronym{html}{\textsc{html}}{\emph{HyperText Markup Language}}
+\newacronym{htr}{\textsc{htr}}{\emph{Handwritten Text Recognition}}
+\newacronym{imagine}{\textsc{imagine}}{Laboratoire d’Informatique Gaspard Monge}
+\newacronym{vhs}{\textsc{vhs}}{Vision artificielle et analyse Historique de la circulation de l'illustration Scientifique}
+\newacronym{syrte}{\textsc{syrte}}{Systèmes de Référence Temps-Espace}
+\newacronym{iscd}{\textsc{iscd}}{Institut des sciences du calcul et des données}
+\newacronym{bnf}{BnF}{Bibliothèque nationale de France}
+\newacronym{inha}{\textsc{inha}}{Institut national d'histoire de l'art}
+\newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
+
+% COMMANDS
+\newcommand{\bnf}{\gls{bnf}\xspace}
+\newcommand{\inha}{\gls{inha}\xspace}
+\newcommand{\enc}{École nationale des chartes\xspace}
+\newcommand{\ponts}{École des Ponts ParisTech\xspace}
+\newcommand{\api}{\gls{api}\xspace}
+\newcommand{\eida}{\gls{eida}\xspace}
+\newcommand{\vhs}{\gls{vhs}\xspace}
+\newcommand{\dishas}{\gls{dishas}\xspace}
+\newcommand{\ist}{\textsc{i}\ieme{}\xspace}
+\newcommand{\ii}{\textsc{ii}\ieme{}\xspace}
+\newcommand{\viii}{\textsc{viii}\ieme{}\xspace}
+\newcommand{\ix}{\textsc{ix}\ieme{}\xspace}
+\newcommand{\xie}{\textsc{xi}\ieme{}\xspace}
+\newcommand{\xii}{\textsc{xii}\ieme{}\xspace}
+\newcommand{\xiii}{\textsc{xiii}\ieme{}\xspace}
+\newcommand{\xv}{\textsc{xv}\ieme{}\xspace}
+\newcommand{\xvi}{\textsc{xvi}\ieme{}\xspace}
+\newcommand{\xviii}{\textsc{xviii}\ieme{}\xspace}
+\newcommand{\ml}{\textit{machine learning}\xspace}
+\newcommand{\dl}{\textit{deep learning}\xspace}
+\newcommand{\cv}{\textit{computer vision}\xspace}
+\newcommand{\jc}{av. J.-C.\xspace}
+\newcommand{\ma}{Moyen-Âge\xspace}
+
+% Pour des sections non numérotées dans la table des matière
+\newcommand\chapterNo[1]{
+  \chapter*{#1}
+  \markright{\MakeUppercase{#1}}
+}
+
+\begin{document}
+
+\onehalfspacing 
+
+\frontmatter
+
+    \include{templates/page-titre}
+
+    \thispagestyle{empty}	
+    \cleardoublepage
+	
+    \include{templates/resume}
+	
+    \chapterNo{Remerciements}
+    \addcontentsline{toc}{chapter}{Remerciements}
+
+    \printbibliography[title={Bibliographie}]
+
+    \chapterNo{Introduction}
+    \addcontentsline{toc}{chapter}{Introduction}
+
+    \thispagestyle{empty}
+    \cleardoublepage
+
+\mainmatter
+
+    \part{Construire un corpus de numérisations pour le traitement par vision artificielle}
+        \chapter{Le projet EiDA}
+                \section{Contexte et objectifs du projet}
+                    \include{templates/partie1/chap1/section1}
+            
+                \section{Sources primaires}
+                    \include{templates/partie1/chap1/section2}
+            
+        \clearemptydoublepage
+        
+        \chapter{Images et interopérabilité}
+                \section{L’image comme source}
+                    \include{templates/partie1/chap2/section1}
+            
+                \section{Le standard IIIF}
+                    \include{templates/partie1/chap2/section2}
+            
+        \clearemptydoublepage
+        
+        \chapter{Corpus historiques et jeux de données pour l’apprentissage machine}
+        \chaptermark{Corpus historiques et jeux de données}
+                \section{Dimensions et cadre}
+                    \include{templates/partie1/chap3/section1}
+            
+                \section{Annotations et qualité des données}
+                    \include{templates/partie1/chap3/section2}
+                    
+        \clearemptydoublepage
+
+
+    \part{De l’image à l’objet : intégrer l’apprentissage profond au traitement des sources historiques}
+        \chapter{Principes et méthodes de l’apprentissage profond}
+        \chaptermark{L'apprentissage profond}
+                \section{Réseaux de neurones et \textit{computer vision}}
+                    \include{templates/partie2/chap4/section1}
+            
+                \section{Modèles de vision \textit{off-the-shelf} : outils libres pour la détection d’objets}
+                \sectionmark{Modèles de vision \textit{off-the-shelf}}
+                    \include{templates/partie2/chap4/section2}
+            
+        \clearemptydoublepage
+        
+        \chapter{L’interface entre chercheurs et algorithme : construire une plateforme pour la détection}
+        \chaptermark{L’interface entre chercheurs et algorithme}
+                \section{Modélisation de la donnée}
+                    \include{templates/partie2/chap5/section1}
+            
+                \section{Architecture de l’application : fonctionnalités et outils}
+                \sectionmark{Architecture de l’application}
+                    \include{templates/partie2/chap5/section2}
+            
+        \clearemptydoublepage
+        
+        \chapter{Intégrer l’apprentissage profond aux pratiques des chercheurs : le \textit{workflow} de traitement des sources}
+        \chaptermark{\textit{Deep learning} et pratiques des chercheurs}
+                \section{Annoter sur un GPU : extractorAPI}
+                    \include{templates/partie2/chap6/section1}
+            
+                \section{De la numérisation à l’annotation}
+                    \include{templates/partie2/chap6/section2}
+             
+                \section{Médiation et documentation}
+                    \include{templates/partie2/chap6/section3}
+            
+        \clearemptydoublepage
+
+    \part{Perspectives pour le traitement des sources : vers un outil pour l’édition et la recherche}
+        \chapter{Éditer des diagrammes : vectorisation et édition critique}
+        \chaptermark{Éditer des diagrammes}
+                \section{Édition critique des diagrammes astronomiques}
+                    \include{templates/partie3/chap7/section1}
+            
+                \section{De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
+                \sectionmark{De l’image aux vecteurs}
+                    \include{templates/partie3/chap7/section2}
+            
+        \clearemptydoublepage
+        
+        \chapter{Regroupement par similarité et \textit{clustering}}
+                \section{\textit{Similarity retrieval} et navigation des corpus}
+                    \include{templates/partie3/chap8/section1}
+            
+                \section{Le \textit{clustering} comme outil pour les chercheurs}
+                    \include{templates/partie3/chap8/section2}
+            
+        \clearemptydoublepage
+        
+        \chapter{Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques}
+        \chaptermark{Exploiter les résultats automatiques}
+                \section{Titre section 1}
+                    \include{templates/partie3/chap9/section1}
+            
+                \section{Titre section 2}
+                    \include{templates/partie3/chap9/section2}
+            
+        \clearemptydoublepage
+    
+    \chapterNo{Conclusion}
+    \addcontentsline{toc}{chapter}{Conclusion}
+
+\appendix
+    \part*{Annexes}	
+    \addcontentsline{toc}{part}{Annexes}
+
+\clearemptydoublepage
+
+\backmatter
+    \printacronyms[title=Liste des acronymes,toctitle=Acronymes]
+    \printglossary 
+    \printbibliography
+    \tableofcontents
+	
+\end{document}
