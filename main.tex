@@ -1,5 +1,3 @@
-% !TeX program = xelatex
-
 \documentclass[a4paper,12pt,twoside]{book}
 \usepackage[T1]{fontenc}
 \usepackage{inputenc}
@@ -7,33 +5,41 @@
 \usepackage{lmodern}
 \usepackage[english,french]{babel}
 \usepackage{xspace} % pour la gestion des espaces après les commandes
-
+%\usepackage{minted} % colored source code
 \usepackage{csquotes} % Gestion des guillemets dans la biblio
 \usepackage[xetex]{graphicx} %Package pour gérer les images
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{float} %Gestion de la position des images
+
+\usepackage{hyperref}
+\hypersetup{%
+	pdfusetitle, 
+	pdfauthor={Jade Norindr}
+	pdfsubject={Mémoire TNAH — Le traitement des sources historiques par la vision artificielle}, 
+	pdfkeywords={vision artificielle}
+}
 
 % Mise en page École des chartes
 \usepackage[margin=2.5cm]{geometry} % marges
 \usepackage{setspace}
 \onehalfspacing % interligne de 1.5
 \setlength\parindent{1cm}
-\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 
 \usepackage{tocbibind}
 \usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
 \addbibresource{bibliographie/bibliographie.bib}
-\nocite{*}
+%\nocite{*}
 \defbibnote{intro}{Cette bibliographie présente toutes les ressources utilisées, de tout type, citées ou non, par simple ordre alphabétique.}
 
-\usepackage[pdfusetitle, pdfsubject={Mémoire TNAH — Le traitement des sources historiques par la vision artificielle}, pdfkeywords={vision artificielle, histoire de l'astronomie, développement applicatif}]{hyperref}
 
-\author{Prénom Nom – M2 TNAH — ENC}
-\title{Titre mémoire}
+\author{Jade Norindr – M2 TNAH — ENC}
+\title{Le traitement des sources historiques par la vision artificielle. L'exemple des manuscrits d'astronomie de tradition ptoléméenne}
 
-% ACRONYMS
+% Acronymes
 \usepackage[automake, acronym, toc]{glossaries}
 \makeglossaries
+
 \setacronymstyle{short-long}
 \newacronym{api}{\textsc{api}}{\emph{Application Programming Interface}}
 \newacronym{eida}{\textsc{eida}}{\emph{Editing and analysing hIstorical astronomical Diagrams with Artificial intelligence}}
@@ -51,9 +57,23 @@
 \newacronym{bnf}{BnF}{Bibliothèque nationale de France}
 \newacronym{inha}{\textsc{inha}}{Institut national d'histoire de l'art}
 \newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
+\newacronym{iiif}{\textsc{iiif}}{International Image Interoperability Framework}
+\newacronym{http}{\textsc{http}}{Hypertext Transfer Protocol}
+\newacronym{https}{\textsc{https}}{Hypertext Transfer Protocol Secure}
+\newacronym{uri}{\textsc{uri}}{Uniform Resource Identifier}
+\newacronym{json}{\textsc{json}}{JavaScript Object Notation}
 
-% COMMANDS
+% Acronymes en petites capitales dans la liste des acronymes
+\usepackage{enumitem}
+\setlist[description]{labelwidth=2em, labelsep=.5em, font=\normalfont}
+
+% Commandes
+\newcommand{\json}{\gls{json}\xspace}
 \newcommand{\bnf}{\gls{bnf}\xspace}
+\newcommand{\uri}{\gls{uri}\xspace}
+\newcommand{\iiif}{\gls{iiif}\xspace}
+\newcommand{\http}{\gls{http}\xspace}
+\newcommand{\https}{\gls{https}\xspace}
 \newcommand{\inha}{\gls{inha}\xspace}
 \newcommand{\enc}{École nationale des chartes\xspace}
 \newcommand{\ponts}{École des Ponts ParisTech\xspace}
@@ -77,7 +97,8 @@
 \newcommand{\jc}{av. J.-C.\xspace}
 \newcommand{\ma}{Moyen-Âge\xspace}
 
-% Pour des sections non numérotées dans la table des matière
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+% Pour des chapitres non numérotées dans la table des matière
 \newcommand\chapterNo[1]{
   \chapter*{#1}
   \markright{\MakeUppercase{#1}}
@@ -99,7 +120,7 @@
     \chapterNo{Remerciements}
     \addcontentsline{toc}{chapter}{Remerciements}
 
-    \printbibliography[title={Bibliographie}]
+    \printbibliography
 
     \chapterNo{Introduction}
     \addcontentsline{toc}{chapter}{Introduction}
@@ -112,97 +133,88 @@
     \part{Construire un corpus de numérisations pour le traitement par vision artificielle}
         \chapter{Le projet EiDA}
                 \section{Contexte et objectifs du projet}
-                    \include{templates/partie1/chap1/section1}
-            
+                    \input{templates/partie1/chap1/section1}
+
                 \section{Sources primaires}
-                    \include{templates/partie1/chap1/section2}
-            
+                    \input{templates/partie1/chap1/section2}
+
         \clearemptydoublepage
         
         \chapter{Images et interopérabilité}
                 \section{L’image comme source}
-                    \include{templates/partie1/chap2/section1}
+                    \input{templates/partie1/chap2/section1}
             
                 \section{Le standard IIIF}
-                    \include{templates/partie1/chap2/section2}
+                    \input{templates/partie1/chap2/section2}
             
         \clearemptydoublepage
         
-        \chapter{Corpus historiques et jeux de données pour l’apprentissage machine}
-        \chaptermark{Corpus historiques et jeux de données}
+        \chapter[Corpus historiques et jeux de données]{Corpus historiques et jeux de données pour l’apprentissage machine}
                 \section{Dimensions et cadre}
-                    \include{templates/partie1/chap3/section1}
+                    \input{templates/partie1/chap3/section1}
             
                 \section{Annotations et qualité des données}
-                    \include{templates/partie1/chap3/section2}
+                    \input{templates/partie1/chap3/section2}
                     
         \clearemptydoublepage
 
 
     \part{De l’image à l’objet : intégrer l’apprentissage profond au traitement des sources historiques}
-        \chapter{Principes et méthodes de l’apprentissage profond}
-        \chaptermark{L'apprentissage profond}
+        \chapter[L'apprentissage profond]{Principes et méthodes de l’apprentissage profond}
                 \section{Réseaux de neurones et \textit{computer vision}}
-                    \include{templates/partie2/chap4/section1}
+                    \input{templates/partie2/chap4/section1}
             
-                \section{Modèles de vision \textit{off-the-shelf} : outils libres pour la détection d’objets}
-                \sectionmark{Modèles de vision \textit{off-the-shelf}}
-                    \include{templates/partie2/chap4/section2}
-            
-        \clearemptydoublepage
-        
-        \chapter{L’interface entre chercheurs et algorithme : construire une plateforme pour la détection}
-        \chaptermark{L’interface entre chercheurs et algorithme}
-                \section{Modélisation de la donnée}
-                    \include{templates/partie2/chap5/section1}
-            
-                \section{Architecture de l’application : fonctionnalités et outils}
-                \sectionmark{Architecture de l’application}
-                    \include{templates/partie2/chap5/section2}
+                \section[Modèles de vision \textit{off-the-shelf}]{Modèles de vision \textit{off-the-shelf} : outils libres pour la détection d’objets}
+                    \input{templates/partie2/chap4/section2}
             
         \clearemptydoublepage
         
-        \chapter{Intégrer l’apprentissage profond aux pratiques des chercheurs : le \textit{workflow} de traitement des sources}
-        \chaptermark{\textit{Deep learning} et pratiques des chercheurs}
+        \chapter[L’interface entre chercheurs et algorithme]{L’interface entre chercheurs et algorithme : construire une plateforme pour la détection}
+                \section[Architecture de l’application]{Architecture de l’application : fonctionnalités et outils}
+                    \input{templates/partie2/chap5/section1}
+                    
+                \section{Créer un outil open source : penser une application réutilisable}
+            		\input{templates/partie2/chap5/section2}
+            
+        \clearemptydoublepage
+        
+        \chapter[\textit{Deep learning} et pratiques des chercheurs]{Intégrer l’apprentissage profond aux pratiques des chercheurs : le \textit{workflow} de traitement des sources}
                 \section{Annoter sur un GPU : extractorAPI}
-                    \include{templates/partie2/chap6/section1}
+                    \input{templates/partie2/chap6/section1}
             
                 \section{De la numérisation à l’annotation}
-                    \include{templates/partie2/chap6/section2}
+                    \input{templates/partie2/chap6/section2}
              
                 \section{Médiation et documentation}
-                    \include{templates/partie2/chap6/section3}
+                    \input{templates/partie2/chap6/section3}
             
         \clearemptydoublepage
 
     \part{Perspectives pour le traitement des sources : vers un outil pour l’édition et la recherche}
-        \chapter{Éditer des diagrammes : vectorisation et édition critique}
-        \chaptermark{Éditer des diagrammes}
+        \chapter[Éditer des diagrammes]{Éditer des diagrammes : vectorisation et édition critique}
                 \section{Édition critique des diagrammes astronomiques}
-                    \include{templates/partie3/chap7/section1}
+                    \input{templates/partie3/chap7/section1}
             
-                \section{De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
-                \sectionmark{De l’image aux vecteurs}
-                    \include{templates/partie3/chap7/section2}
+                \section[De l’image aux vecteurs]{De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
+                    \input{templates/partie3/chap7/section2}
             
         \clearemptydoublepage
         
         \chapter{Regroupement par similarité et \textit{clustering}}
                 \section{\textit{Similarity retrieval} et navigation des corpus}
-                    \include{templates/partie3/chap8/section1}
+                    \input{templates/partie3/chap8/section1}
             
                 \section{Le \textit{clustering} comme outil pour les chercheurs}
-                    \include{templates/partie3/chap8/section2}
+                    \input{templates/partie3/chap8/section2}
             
         \clearemptydoublepage
         
-        \chapter{Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques}
-        \chaptermark{Exploiter les résultats automatiques}
+        \chapter[Exploiter les résultats automatique]{Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques}
                 \section{Titre section 1}
-                    \include{templates/partie3/chap9/section1}
+                    \input{templates/partie3/chap9/section1}
             
                 \section{Titre section 2}
-                    \include{templates/partie3/chap9/section2}
+                    \input{templates/partie3/chap9/section2}
             
         \clearemptydoublepage
     
@@ -218,7 +230,6 @@
 \backmatter
     \printacronyms[title=Liste des acronymes,toctitle=Acronymes]
     \printglossary 
-    \printbibliography
     \tableofcontents
 	
 \end{document}
