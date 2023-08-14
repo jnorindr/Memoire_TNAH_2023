@@ -57,17 +57,22 @@
 \newacronym{bnf}{BnF}{Bibliothèque nationale de France}
 \newacronym{inha}{\textsc{inha}}{Institut national d'histoire de l'art}
 \newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
-\newacronym{iiif}{\textsc{iiif}}{International Image Interoperability Framework}
-\newacronym{http}{\textsc{http}}{Hypertext Transfer Protocol}
-\newacronym{https}{\textsc{https}}{Hypertext Transfer Protocol Secure}
-\newacronym{uri}{\textsc{uri}}{Uniform Resource Identifier}
-\newacronym{json}{\textsc{json}}{JavaScript Object Notation}
+\newacronym{iiif}{\textsc{iiif}}{\emph{International Image Interoperability Framework}}
+\newacronym{http}{\textsc{http}}{\emph{Hypertext Transfer Protocol}}
+\newacronym{https}{\textsc{https}}{\emph{Hypertext Transfer Protocol Secure}}
+\newacronym{uri}{\textsc{uri}}{\emph{Uniform Resource Identifier}}
+\newacronym{json}{\textsc{json}}{\emph{JavaScript Object Notation}}
+\newacronym{svg}{\textsc{svg}}{\emph{Scalable Vector Graphics}}
+\newacronym{enherit}{EnHerit}{\emph{Enhancing Heritage Image Databases}}
 
 % Acronymes en petites capitales dans la liste des acronymes
 \usepackage{enumitem}
 \setlist[description]{labelwidth=2em, labelsep=.5em, font=\normalfont}
 
 % Commandes
+\newcommand{\imagine}{\gls{imagine}\xspace}
+\newcommand{\enherit}{\gls{enherit}\xspace}
+\newcommand{\svg}{\gls{svg}\xspace}
 \newcommand{\json}{\gls{json}\xspace}
 \newcommand{\bnf}{\gls{bnf}\xspace}
 \newcommand{\uri}{\gls{uri}\xspace}
@@ -96,6 +101,7 @@
 \newcommand{\cv}{\textit{computer vision}\xspace}
 \newcommand{\jc}{av. J.-C.\xspace}
 \newcommand{\ma}{Moyen-Âge\xspace}
+\newcommand{\ia}{intelligence artificielle\xspace}
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 % Pour des chapitres non numérotées dans la table des matière
@@ -132,30 +138,43 @@
 
     \part{Construire un corpus de numérisations pour le traitement par vision artificielle}
         \chapter{Le projet EiDA}
+        Cette partie a pour objectif de revenir sur le contexte institutionnel du projet \eida, projet de recherche mené à l'Observatoire de Paris par l'équipe d'histoire des science du laboratoire \acrshort{syrte}. Ce projet a pour sujet d'étude les diagrammes astronomiques de tradition ptoléméenne : cette partie vise ainsi à contextualiser d'un point de vue historique le corpus du projet, et à en expliciter les bornes chronologiques et géographiques.
+        
                 \section{Contexte et objectifs du projet}
                     \input{templates/partie1/chap1/section1}
 
                 \section{Sources primaires}
                     \input{templates/partie1/chap1/section2}
-
+		\\
+		\\
+		\eida est un projet aux bornes chronologiques, géographiques et thématiques vastes, pour permettre une étude sur un temps long et dans un contexte global de la circulation des diagrammes astronomiques et des théories scientifiques qui les accompagnent. Dans cette démarche, proposer une étude quantitative, traitant un grand nombre de sources, permet de mettre en avant des motifs, connexions et évolutions en accord avec la diffusion afro-eurasienne des idées développées par Ptolémée. Les bornes définies dans cette partie permettent de délimiter un corpus d'images -- numérisations d'ouvrages manuscrits ou imprimés -- qui en tant d'objets numériques présentent également leurs propres problématiques, sur lesquelles revient la partie suivante.
         \clearemptydoublepage
         
         \chapter{Images et interopérabilité}
+        Les sources étudiées dans ce mémoire sont des sources iconographiques : cette partie vise à revenir sur les formats, ressources et méthodes pour le traitement des images en ligne, de la production de la ressource à sa publication. Les images digitales présentent des enjeux spécifiques, du point de vue de la technique, du droit et de la disponibilité. La mise en ligne et la diffusion d'une image fait suite à une longue chaîne de traitement qui a pour point de départ un objet matériel, et soulève des questionnements divers. Les spécifications \iiif tente de répondre à un certain nombre de problématiques liées à la présence en ligne de ressources iconographiques, et cette partie vise donc à présenter les solutions, possibilités et limites offertes par ce standard.
+        
                 \section{L’image comme source}
                     \input{templates/partie1/chap2/section1}
             
                 \section{Le standard IIIF}
                     \input{templates/partie1/chap2/section2}
-            
+        \\
+        \\
+        Les sources iconographiques sont soumises à un ensemble de restrictions, du point de vue du format, des métadonnées ou des droits, qui manquent encore d'une uniformité internationale et entre institutions qui rendrait fluide le partage de ces ressources sur Internet et entre les projets de recherche. Dans un projet impliquant l'utilisation d'algorithmes de vision artificielle, qui repose alors sur le traitement d'un volume important d'image, la mise en ligne de ces documents est un enjeux crucial, sur lequel repose d'une part la possibilité de constituer un corpus exploitable, ainsi que la publication des résultats du projet, qui peuvent également prendre la forme d'images numériques. Dans une optique de science ouverte, l'utilisation de standards et d'outils tels que ceux développés par le consortium \iiif permet d'assurer le partage d'images et de données respectant les mêmes formats, exploitables avec des outils libres, et d'avancer vers une abolition des silos de données, qui faciliterait notamment la construction de corpus massifs pour l'apprentissage machine. 
         \clearemptydoublepage
         
         \chapter[Corpus historiques et jeux de données]{Corpus historiques et jeux de données pour l’apprentissage machine}
+        
+        La vision artificielle et l'apprentissage machine permet le traitement de corpus d'images massifs par des méthodes quantitatives qui permettent aux historiens de traiter un volume de données bien plus important qu'une approche manuelle, ouvrant ainsi la voie à de nouvelles approches. Cette partie revient sur les bonnes pratiques à mettre en place afin d'assurer la pertinence de l'utilisation de ces outils, et d'en faire des traitements efficaces en accord avec les ambitions des projets.
+        
                 \section{Dimensions et cadre}
                     \input{templates/partie1/chap3/section1}
             
-                \section{Annotations et qualité des données}
+                \section{Objectifs scientifiques et possibilités numériques}
                     \input{templates/partie1/chap3/section2}
-                    
+        \\
+        \\
+        Le \dl et la vision artificielle permettent aux projets de recherche en histoire et en histoire de l'art d'envisager de nouvelles approches des sources, à l'aide de traitement automatisés qui offrent de nouvelles méthodes de navigation de corpus d'images massifs : de la détection à l'édition, les outils produits redéfinissent les étapes de traitement des sources, et il est ainsi nécessaire d'intégrer aux pratiques des chercheurs des méthodes spécifiques à ce type d'approche, et notamment pour la création de jeu de données d'entraînement, à la base du développement de tout modèle de \ml. Cette intégration passe notamment par la rédaction de documentation, ainsi qu'un dialogue entre les équipes de recherche en vision artificielle et les équipes d'historiens. Ce dialogue permet d'établir les besoins de chacun, et de développer des outils techniques qui répondent aux besoins scientifiques de manière pertinente, en développant des modèles qui, malgré leurs limites, rejoignent aux mieux les attentes des sciences historiques.
         \clearemptydoublepage
 
 
