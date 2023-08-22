@@ -64,12 +64,17 @@
 \newacronym{json}{\textsc{json}}{\emph{JavaScript Object Notation}}
 \newacronym{svg}{\textsc{svg}}{\emph{Scalable Vector Graphics}}
 \newacronym{enherit}{EnHerit}{\emph{Enhancing Heritage Image Databases}}
-
+\newacronym{cnn}{\textsc{cnn}}{Convolutional Neural Nets}
+\newacronym{yolo}{\textsc{yolo}}{\textit{You Only Look Once}}
 % Acronymes en petites capitales dans la liste des acronymes
 \usepackage{enumitem}
 \setlist[description]{labelwidth=2em, labelsep=.5em, font=\normalfont}
 
 % Commandes
+\newcommand{\yolo}{\gls{yolo}\xspace}
+\newcommand{\yolov}{\textsc{yolo}v5\xspace}
+\newcommand{\docex}{docExtractor\xspace}
+\newcommand{\cnn}{\gls{cnn}\xspace}
 \newcommand{\imagine}{\gls{imagine}\xspace}
 \newcommand{\enherit}{\gls{enherit}\xspace}
 \newcommand{\svg}{\gls{svg}\xspace}
@@ -146,7 +151,7 @@
                 \section{Sources primaires}
                     \input{templates/partie1/chap1/section2}
 		\\
-		\\
+		
 		\eida est un projet aux bornes chronologiques, géographiques et thématiques vastes, pour permettre une étude sur un temps long et dans un contexte global de la circulation des diagrammes astronomiques et des théories scientifiques qui les accompagnent. Dans cette démarche, proposer une étude quantitative, traitant un grand nombre de sources, permet de mettre en avant des motifs, connexions et évolutions en accord avec la diffusion afro-eurasienne des idées développées par Ptolémée. Les bornes définies dans cette partie permettent de délimiter un corpus d'images -- numérisations d'ouvrages manuscrits ou imprimés -- qui en tant d'objets numériques présentent également leurs propres problématiques, sur lesquelles revient la partie suivante.
         \clearemptydoublepage
         
@@ -159,7 +164,7 @@
                 \section{Le standard IIIF}
                     \input{templates/partie1/chap2/section2}
         \\
-        \\
+        
         Les sources iconographiques sont soumises à un ensemble de restrictions, du point de vue du format, des métadonnées ou des droits, qui manquent encore d'une uniformité internationale et entre institutions qui rendrait fluide le partage de ces ressources sur Internet et entre les projets de recherche. Dans un projet impliquant l'utilisation d'algorithmes de vision artificielle, qui repose alors sur le traitement d'un volume important d'image, la mise en ligne de ces documents est un enjeux crucial, sur lequel repose d'une part la possibilité de constituer un corpus exploitable, ainsi que la publication des résultats du projet, qui peuvent également prendre la forme d'images numériques. Dans une optique de science ouverte, l'utilisation de standards et d'outils tels que ceux développés par le consortium \iiif permet d'assurer le partage d'images et de données respectant les mêmes formats, exploitables avec des outils libres, et d'avancer vers une abolition des silos de données, qui faciliterait notamment la construction de corpus massifs pour l'apprentissage machine. 
         \clearemptydoublepage
         
@@ -173,22 +178,27 @@
                 \section{Objectifs scientifiques et possibilités numériques}
                     \input{templates/partie1/chap3/section2}
         \\
-        \\
+        
         Le \dl et la vision artificielle permettent aux projets de recherche en histoire et en histoire de l'art d'envisager de nouvelles approches des sources, à l'aide de traitement automatisés qui offrent de nouvelles méthodes de navigation de corpus d'images massifs : de la détection à l'édition, les outils produits redéfinissent les étapes de traitement des sources, et il est ainsi nécessaire d'intégrer aux pratiques des chercheurs des méthodes spécifiques à ce type d'approche, et notamment pour la création de jeu de données d'entraînement, à la base du développement de tout modèle de \ml. Cette intégration passe notamment par la rédaction de documentation, ainsi qu'un dialogue entre les équipes de recherche en vision artificielle et les équipes d'historiens. Ce dialogue permet d'établir les besoins de chacun, et de développer des outils techniques qui répondent aux besoins scientifiques de manière pertinente, en développant des modèles qui, malgré leurs limites, rejoignent aux mieux les attentes des sciences historiques.
         \clearemptydoublepage
 
 
     \part{De l’image à l’objet : intégrer l’apprentissage profond au traitement des sources historiques}
-        \chapter[L'apprentissage profond]{Principes et méthodes de l’apprentissage profond}
+        \chapter[L'apprentissage profond]{Principes et utilisation de l’apprentissage profond}
+        
+        L'apprentissage profond est un sous-domaine de l'apprentissage automatique basé sur l'apprentissage de couches successives de représentation. Le nombre de couches définit la profondeur du modèle : de nos jours, l'apprentissage profond compte plusieurs dizaines à plusieurs centaines de couches, qui apprennent toutes automatiquement à l'aide de données d'apprentissage\footcite{cholletApprentissageProfondAvec2020a}. Cette approche est au cœur des modèles de vision artificielle dont nous parlons dans ce mémoire, qui reposent sur des réseaux de neurones qui constituent ces couches superposées permettant un apprentissage des représentations à partir de données fournies.
+        
                 \section{Réseaux de neurones et \textit{computer vision}}
                     \input{templates/partie2/chap4/section1}
             
-                \section[Modèles de vision \textit{off-the-shelf}]{Modèles de vision \textit{off-the-shelf} : outils libres pour la détection d’objets}
+                \section[Modèles de vision \textit{off-the-shelf}]{Modèles de détection \textit{off-the-shelf} : outils libres pour l'extraction d’objets}
                     \input{templates/partie2/chap4/section2}
-            
+        \\
+		
+		Les modèles de vision \textit{off-the-shelf} ouvrent à des projets divers la possibilité d'intégrer la vision artificielle à leurs méthodologies, en réduisant le coût humain et temporel du développement d'un modèle de \textit{deep learning} par la mise à disposition en accès libre d'outils déjà performants, qu'il est possible d'entraîner pour les ajuster à des données spécifiques. Pour la détection d'objets, des jeux de données en accès libre tels qu'ImageNet permettent un pré-entraînement de ces modèles \textit{off-the-shelf}, qui apprennent alors des caractéristiques larges qui peuvent être précisées par un entraînement sur des sources plus spécifiques, en nécessitant un volume de données moins important qu'un modèle créé de zéro : ces modèles de détection \textit{off-the-shelf} présentent ainsi une solution aux limites que peuvent présenter les sources historiques en termes de volume des données disponibles, et permettent également aux projets de se construire sur des bases solides, sans allouer de ressources à la création d'outils déjà existants, déjà performants, pour des tâches telles que la détection d'objet qui font partie des tâches canoniques de la vision par ordinateur.
         \clearemptydoublepage
         
-        \chapter[L’interface entre chercheurs et algorithme]{L’interface entre chercheurs et algorithme : construire une plateforme pour la détection}
+        \chapter[L’interface entre chercheurs et algorithme]{L’interface entre chercheurs et algorithmes : construire une plateforme pour la détection}
                 \section[Architecture de l’application]{Architecture de l’application : fonctionnalités et outils}
                     \input{templates/partie2/chap5/section1}
                     
@@ -243,6 +253,9 @@
 \appendix
     \part*{Annexes}	
     \addcontentsline{toc}{part}{Annexes}
+    
+    \chapter[Prepare custom data for training]{\label{YOLOv5Training}Prepare custom data for training using the YOLOv5 workflow}
+    \input{templates/annexes/yolotraining}
 
 \clearemptydoublepage
 
