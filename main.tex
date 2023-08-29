@@ -11,6 +11,36 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{float} %Gestion de la position des images
+\usepackage{listings}
+\usepackage{xcolor}
+
+%Couleurs des blocs de code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Style des blocs de code
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \usepackage{hyperref}
 \hypersetup{%
@@ -56,6 +86,7 @@
 \newacronym{iscd}{\textsc{iscd}}{Institut des sciences du calcul et des données}
 \newacronym{bnf}{BnF}{Bibliothèque nationale de France}
 \newacronym{inha}{\textsc{inha}}{Institut national d'histoire de l'art}
+\newacronym{enc}{\textsc{enc}}{École nationale des chartes}
 \newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
 \newacronym{iiif}{\textsc{iiif}}{\emph{International Image Interoperability Framework}}
 \newacronym{http}{\textsc{http}}{\emph{Hypertext Transfer Protocol}}
@@ -66,26 +97,39 @@
 \newacronym{enherit}{EnHerit}{\emph{Enhancing Heritage Image Databases}}
 \newacronym{cnn}{\textsc{cnn}}{Convolutional Neural Nets}
 \newacronym{yolo}{\textsc{yolo}}{\textit{You Only Look Once}}
+\newacronym{gpu}{\textsc{gpu}}{\textit{Graphics Processing Unit}}
+\newacronym{cpu}{\textsc{cpu}}{\textit{Central Processing Unit}}
+\newacronym{url}{\textsc{url}}{\textit{Uniform Resource Locator}}
+\newacronym{ssh}{\textsc{ssh}}{\textit{Secure Shell}}
+\newacronym{rest}{\textsc{rest}}{\textit{Representational state transfer}}
+
+
 % Acronymes en petites capitales dans la liste des acronymes
 \usepackage{enumitem}
 \setlist[description]{labelwidth=2em, labelsep=.5em, font=\normalfont}
 
 % Commandes
+\newcommand{\rest}{\gls{rest}\xspace}
+\newcommand{\gpu}{\gls{gpu}\xspace}
+\newcommand{\cpu}{\gls{cpu}\xspace}
+\newcommand{\ssh}{\gls{ssh}\xspace}
+\newcommand{\URL}{\gls{url}\xspace}
 \newcommand{\yolo}{\gls{yolo}\xspace}
 \newcommand{\yolov}{\textsc{yolo}v5\xspace}
 \newcommand{\docex}{docExtractor\xspace}
+\newcommand{\exapi}{extractorAPI\xspace}
 \newcommand{\cnn}{\gls{cnn}\xspace}
 \newcommand{\imagine}{\gls{imagine}\xspace}
 \newcommand{\enherit}{\gls{enherit}\xspace}
 \newcommand{\svg}{\gls{svg}\xspace}
 \newcommand{\json}{\gls{json}\xspace}
-\newcommand{\bnf}{\gls{bnf}\xspace}
 \newcommand{\uri}{\gls{uri}\xspace}
 \newcommand{\iiif}{\gls{iiif}\xspace}
 \newcommand{\http}{\gls{http}\xspace}
 \newcommand{\https}{\gls{https}\xspace}
+\newcommand{\bnf}{\gls{bnf}\xspace}
 \newcommand{\inha}{\gls{inha}\xspace}
-\newcommand{\enc}{École nationale des chartes\xspace}
+\newcommand{\enc}{\gls{enc}\xspace}
 \newcommand{\ponts}{École des Ponts ParisTech\xspace}
 \newcommand{\api}{\gls{api}\xspace}
 \newcommand{\eida}{\gls{eida}\xspace}
@@ -101,11 +145,11 @@
 \newcommand{\xv}{\textsc{xv}\ieme{}\xspace}
 \newcommand{\xvi}{\textsc{xvi}\ieme{}\xspace}
 \newcommand{\xviii}{\textsc{xviii}\ieme{}\xspace}
+\newcommand{\jc}{av. J.-C.\xspace}
+\newcommand{\ma}{Moyen-Âge\xspace}
 \newcommand{\ml}{\textit{machine learning}\xspace}
 \newcommand{\dl}{\textit{deep learning}\xspace}
 \newcommand{\cv}{\textit{computer vision}\xspace}
-\newcommand{\jc}{av. J.-C.\xspace}
-\newcommand{\ma}{Moyen-Âge\xspace}
 \newcommand{\ia}{intelligence artificielle\xspace}
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
@@ -198,24 +242,28 @@
 		Les modèles de vision \textit{off-the-shelf} ouvrent à des projets divers la possibilité d'intégrer la vision artificielle à leurs méthodologies, en réduisant le coût humain et temporel du développement d'un modèle de \textit{deep learning} par la mise à disposition en accès libre d'outils déjà performants, qu'il est possible d'entraîner pour les ajuster à des données spécifiques. Pour la détection d'objets, des jeux de données en accès libre tels qu'ImageNet permettent un pré-entraînement de ces modèles \textit{off-the-shelf}, qui apprennent alors des caractéristiques larges qui peuvent être précisées par un entraînement sur des sources plus spécifiques, en nécessitant un volume de données moins important qu'un modèle créé de zéro : ces modèles de détection \textit{off-the-shelf} présentent ainsi une solution aux limites que peuvent présenter les sources historiques en termes de volume des données disponibles, et permettent également aux projets de se construire sur des bases solides, sans allouer de ressources à la création d'outils déjà existants, déjà performants, pour des tâches telles que la détection d'objet qui font partie des tâches canoniques de la vision par ordinateur.
         \clearemptydoublepage
         
-        \chapter[L’interface entre chercheurs et algorithme]{L’interface entre chercheurs et algorithmes : construire une plateforme pour la détection}
-                \section[Architecture de l’application]{Architecture de l’application : fonctionnalités et outils}
-                    \input{templates/partie2/chap5/section1}
-                    
-                \section{Créer un outil open source : penser une application réutilisable}
-            		\input{templates/partie2/chap5/section2}
-            
-        \clearemptydoublepage
+        \chapter[Construire une plateforme pour la détection]{Construire une plateforme pour la détection : outils, interfaces et modèles de données}
         
-        \chapter[\textit{Deep learning} et pratiques des chercheurs]{Intégrer l’apprentissage profond aux pratiques des chercheurs : le \textit{workflow} de traitement des sources}
-                \section{Annoter sur un GPU : extractorAPI}
-                    \input{templates/partie2/chap6/section1}
+        L'intégration du \textit{deep learning} aux pratiques des chercheurs en sciences historiques passe par le développement d'une plateforme qui leur permet d'exploiter simplement ces outils pour traiter leurs sources. Cette plateforme à interface graphique doit être adaptée aux sources traitées, et pensée pour intégrer toutes les fonctionnalités souhaitées. En s'appuyant sur les développements réalisés par les projets \eida et \vhs, cette partie revient sur la construction d'une application  et d'une \api dédiées à la détection de diagrammes et images scientifiques dans les numérisations d'ouvrages manuscrits ou imprimés, avec une interface pour la correction de la détection : nous évoquons ainsi les méthodes de développement, les réflexions liées aux données, les besoins matériels liés à l'utilisation d'algorithmes de vision, et le développement d'une \api pour lancer l'inférence sur un \gpu. 
+         
+                \section{Penser une application pour la détection d'objets}
+                    \input{templates/partie2/chap5/section1}
             
-                \section{De la numérisation à l’annotation}
-                    \input{templates/partie2/chap6/section2}
+                \section{Annoter sur un GPU : extractorAPI}
+                    \input{templates/partie2/chap5/section2}
+        \\
+        
+        L'\textit{open source} est une préoccupation centrale lors du développement d'outil pour les projets de recherche : il est en effet souhaitable de produire, dans la mesure du possible, des applications réutilisables par des projets futurs, pour assurer une continuité dans les travaux produits sans que se démultiplient les développements d'outils similaires. Ainsi, le remploi du code est au cœur des ambitions des équipes d'ingénierie : l'intégration de l'apprentissage profond à des projets d'histoire nécessite des outils spécifiques, construits autour de ces traitements des sources par l'\ia, qui restent néanmoins similaires -- ou comparables dans leurs besoins techniques -- d'un projet à l'autre. L'utilisation d'un \gpu pour la vision artificielle compte parmi les besoins matériels qui se traduisent entre les projets, ainsi, dans une optique de programmation modulaire, une \api externe à l'application \vhs/\eida a été développée pour répondre à ce besoin, sans être hautement spécifique aux besoins de ces projets comme pourrait l'être un module intégré à l'application. \exapi, l'\api développée dans ce cadre, est ainsi conçue, dès son cahier des charges, pour répondre aux besoins du projet \eida tout en restant réemployable dans d'autres contextes -- sont ainsi utilisés, pour sa construction, des outils libres qui en standardisent le développement, avec la vocation de produire une \api aussi flexible que robuste.
+        
+      	\chapter[\textit{Computer vision} et pratiques des chercheurs]{Intégrer la vision artificielle aux pratiques des chercheurs}
+      	
+      	Le chapitre précédent établit, du point de vue du \textit{back end}, les besoins techniques pour l'intégration de la vision artificielle à une chaîne de traitement des sources historiques : ces préoccupations en termes d'architecture et de puissance de calcul sont celles des équipes d'ingénierie, et existent en parallèle des préoccupations qui concernent plus directement les utilisateurs, et impactent réellement les pratiques des chercheurs. Ce chapitre revient ainsi sur la chaîne de traitement des sources historiques dans sa totalité, depuis la numérisation fournie par l'utilisateur jusqu'aux résultats retournés pour le traitement par les chercheurs, et sur les échanges avec les utilisateurs, en termes d'interface mais également en termes de médiation.
+               
+                \section[\textit{Workflow} de traitement des sources]{De la numérisation à l’annotation : l'automatisation du traitement des sources}
+                    \input{templates/partie2/chap6/section1}
              
                 \section{Médiation et documentation}
-                    \input{templates/partie2/chap6/section3}
+                    \input{templates/partie2/chap6/section2}
             
         \clearemptydoublepage
 
@@ -237,17 +285,9 @@
                     \input{templates/partie3/chap8/section2}
             
         \clearemptydoublepage
-        
-        \chapter[Exploiter les résultats automatique]{Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques}
-                \section{Titre section 1}
-                    \input{templates/partie3/chap9/section1}
-            
-                \section{Titre section 2}
-                    \input{templates/partie3/chap9/section2}
-            
-        \clearemptydoublepage
     
     \chapterNo{Conclusion}
+    Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques
     \addcontentsline{toc}{chapter}{Conclusion}
 
 \appendix
@@ -255,13 +295,25 @@
     \addcontentsline{toc}{part}{Annexes}
     
     \chapter[Prepare custom data for training]{\label{YOLOv5Training}Prepare custom data for training using the YOLOv5 workflow}
-    \input{templates/annexes/yolotraining}
+	    \input{templates/annexes/yolotraining}
+    \chapter[Modèles de données EIDA/VHS]{\label{eidaDataModels}Modèles de données des applications VHS et EIDA}
+	    \input{templates/annexes/datamodel}
+    \chapter{\label{exapiCahier}extractorAPI : cahier des charges}
+	    \input{templates/annexes/exapicahier}
+	\chapter{\label{yoloScript}Script YOLOv5 pour lancer la détection d'objet}
+		Le script suivant est une reproduction du script \texttt{detect\_vhs.py} utilisé dans \exapi pour lancer la détection d'objet dans les images envoyées par l'application : \url{https://github.com/jnorindr/extractorAPI/blob/main/yolov5/detect_vhs.py}
+		\input{templates/annexes/yoloscript}
+	\chapter[Annotate images with extractorAPI]{\label{exapiAnno}Annotate images from EiDA with extractorAPI}
+		Ce document est extrait du Wiki de l'\api, disponible sur GitHub en accompagnement du code. Il a été rédigé pour documenter les interactions entre \exapi et l'application \eida, pour faciliter la réutilisation de l'\api par des projets tiers. Le document est disponible à l'adresse suivante : \url{https://github.com/jnorindr/extractorAPI/wiki/Annotate-images-from-EiDA-with-extractorAPI}
+		\input{templates/annexes/exapianno}
 
 \clearemptydoublepage
 
 \backmatter
     \printacronyms[title=Liste des acronymes,toctitle=Acronymes]
     \printglossary 
+    \listoffigures
     \tableofcontents
+
 	
 \end{document}

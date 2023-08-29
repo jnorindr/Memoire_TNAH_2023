@@ -31,7 +31,7 @@
         \subsubsection{Démarche et volume des données}
 		L'entraînement d'un modèle sur un jeu de données spécifiques permet de préciser les tâches effectuées et d'obtenir un modèle adapté aux besoins spécifiques de chaque projet. L'utilisation d'un modèle pré-entraîné permet, comme mentionné précédemment, de pallier aux limites de jeux de données avec trop peu d'exemples, en exploitant les représentations apprises précédemment et en les spécialisant sur les données spécifiques du projet qui l'utilise.
 		
-		   	\begin{figure}[H]
+		\begin{figure}[H]
 			\begin{subfigure}{1\linewidth}
 				\centering
 				\includegraphics[width=10.5cm]{images/ms40_p28_docext.png}
@@ -62,13 +62,12 @@
 		
 		L'entraînement d'un modèle \yolov se fait à partir d'un \textit{dataset} d'images et d'étiquettes (\textit{labels}) : il s'organise ainsi en un dossier de fichiers image (au format .png ou .jpg), et un dossier de fichiers texte (au format .txt) contenant une liste d'objets. Chaque fichier texte correspond à un ou plusieurs fichiers image -- plusieurs dans le cas de numérisation d'ouvrages, notamment, qui se composent d'un fichier d'annotations par ouvrage numérisé et non par image -- et listent les objets détectés dans l'image, à raison d'une ligne par objet. L'objet est caractérisé par ses dimensions (selon un rectangle qui l'encadre) et ses coordonnées sur l'image. Par exemple, le fragment de ficher d'annotation suivant correspond aux quatre objets détectés sur la page 6 du manuscrit 5 (Alm. 1) de la Gurukul Kangri Haridwar Collection (fig. \ref{fig:annotation_ms143}) :
 		
-		\begin{verbatim}
+		\begin{lstlisting}
 			6 ms143_0006.jpg
 			243 1852 464 549
 			168 7 763 618
 			440 951 1174 1130
-			919 47 851 826
-		\end{verbatim}
+			919 47 851 826\end{lstlisting}
 
 	   	\begin{figure}[H]
 			\centering
