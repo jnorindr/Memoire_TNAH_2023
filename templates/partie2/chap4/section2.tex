@@ -17,71 +17,70 @@
    	
    	\begin{figure}[h]
    		\centering
-   		\includegraphics[width=16cm]{images/syndoc.jpg}
+   		\includegraphics[width=14cm]{images/syndoc.jpg}
    		\caption{Exemples tirés d'un jeu de données généré avec SynDoc}
    		\label{fig:syndoc}
    	\end{figure}
    	
-   	Contrairement à \yolov, \docex est donc développé spécifiquement pour le traitement des sources historiques, en prenant en compte les spécificités de ces documents iconographiques : le modèle est ainsi adapté au traitement d'images de pages contenant du texte et des illustrations, et prévoit également des outils de traitement du texte, tels que la détection des lignes en prévision\footnote{La détection des lignes est une étape préliminaire de traitements tels que la reconnaissance optique de caractères (OCR) ou la reconnaissance de l'écriture manuscrite (HTR).}. \docex semble ainsi être le modèle à favoriser dans le cadre des projets mentionnés dans ce mémoire, cependant, les premières évaluations des modèles\footnote{Les deux modèles ont fait l'objet d'un entraînement préliminaire sur des sources historiques qui ne sont cependant pas celles des deux projets, pour un premier affinement de leurs performances.} sur les sources d'\eida et de \vhs semblent témoigner de performances équivalentes.\\
+   	Contrairement à \yolov, \docex est donc développé spécifiquement pour le traitement des sources historiques, en prenant en compte les spécificités de ces documents iconographiques : le modèle est ainsi adapté au traitement d'images de pages contenant du texte et des illustrations, et prévoit également des outils de traitement du texte, tels que la détection des lignes en prévision\footnote{La détection des lignes est une étape préliminaire de traitements tels que la reconnaissance optique de caractères (OCR) ou la reconnaissance de l'écriture manuscrite (HTR).}. \docex semble ainsi être le modèle à favoriser dans le cadre des projets mentionnés dans ce mémoire, cependant, les premières évaluations des modèles\footnote{Les deux modèles ont fait l'objet d'un entraînement préliminaire sur des sources historiques qui ne sont cependant pas celles des deux projets, pour un premier affinement de leurs performances.} sur les sources d'\eida et de \vhs semblent témoigner de performances équivalentes.
    	
    	En effet, les détections de diagrammes lancées sur des sources du corpus \eida en prévision de leur annotation par les chercheurs pour la constitution du jeu d'entraînement ont témoigné de performances prometteuses aussi bien pour \docex que pour \yolov  (fig. \ref{fig:performances_modeles}), avec des diagrammes non-détectés dans les deux cas : les performances de chacun des deux modèles varient en fonction des pages, et il sera donc nécessaire de les départager en évaluant plus précisément leurs performances en amont de l'entraînement, puis après un premier entraînement des deux modèles sur les sources du projet\footnote{Sur le projet \eida, les modèles ont été fournis par les chercheurs du laboratoire \imagine et l'ingénieur du projet \vhs, n'ont donc pas encore été évalués sur les sources astronomiques du projet. La vérité de terrain étant encore en cours de production à l'été 2023, l'évaluation sera faite à partir d'un fragment de ce jeu de données lorsqu'il sera disponible.}. En tant que modèles \textit{off-the-shelf} en libre accès, \yolov et \docex ont pour vocation d'être efficaces et performants même sans entraînement sur des données spécifiques, et permettent ainsi de mener de manière satisfaisante des tâches de détection et d'extraction sur des données personnelles. Cependant, pour obtenir de meilleures performances, il est préférable d'entraîner ces modèles \textit{off-the-shelf} sur des images tirées du corpus du projet, pour l'adapter et le spécialiser dans la résolution de ces problèmes particuliers.
    	
-   	
-    \subsection{Entraînement et \textit{fine-tuning} d'un modèle de détection}
-        \subsubsection{Démarche et volume des données}
-		L'entraînement d'un modèle sur un jeu de données spécifiques permet de préciser les tâches effectuées et d'obtenir un modèle adapté aux besoins spécifiques de chaque projet. L'utilisation d'un modèle pré-entraîné permet, comme mentionné précédemment, de pallier aux limites de jeux de données avec trop peu d'exemples, en exploitant les représentations apprises précédemment et en les spécialisant sur les données spécifiques du projet qui l'utilise.
-		
-		\begin{figure}[H]
-			\begin{subfigure}{1\linewidth}
-				\centering
-				\includegraphics[width=10.5cm]{images/ms40_p28_docext.png}
-				\subcaption{p. 28, \docex}
-			\end{subfigure}
-			\hspace{1pt}
-			\begin{subfigure}{1\linewidth}
-				\centering
-				\includegraphics[width=10.5cm]{images/ms40_p28_yolov5.png}
-				\subcaption{p. 28, \yolov}
-			\end{subfigure}
-			\begin{subfigure}{1\linewidth}
-				\centering
-				\includegraphics[width=10.5cm]{images/ms40_p45_docext.png}
-				\subcaption{p. 45, \docex}
-			\end{subfigure}
-			\hspace{1pt}
-			\begin{subfigure}{1\linewidth}
-				\centering
-				\includegraphics[width=10.5cm]{images/ms40_p45_yolov5.png}
-				\subcaption{p. 45, \docex}
-			\end{subfigure}
-			\caption{Diagrammes détectés par les modèles \yolov et \docex dans deux pages du manuscrit hebr. Or. fol. 1054 de la Staatsbibliotek (Berlin).}
-			\label{fig:performances_modeles}
-		\end{figure}
-		
-		Les modèles de détection \textit{off-the-shelf} comme \yolov prévoient souvent un \textit{workflow} pour l'entraînement du modèle\footcite{sharmaTrainingYOLOv5Object2022} par des projets qui souhaiteraient le spécialiser. Ainsi, dans le cas de \yolov, l'entraînement étant prévu par les développements mis à disposition par Ultralytics, il est nécessaire pour les ingénieurs de prévoir des jeux de données d'entraînement adaptés au format requis par le modèle\footnote{Les projets \vhs et \eida emploient tous deux \yolov comme modèle, ou \docex intégré au \textit{workflow} développé par Ultralytics pour \yolov : la structure des jeux de données d'entraînement est donc la même pour les deux modèles.} : l'annotation par les chercheurs doit donc être effectuée en prenant en compte ces restrictions, et les outils développés par les ingénieurs pour l'annotation des images doivent avoir pour sortie des fichiers aux formats appropriés. Un document de spécification sur les formats d'image et d'annotation a été réalisé dans le cadre du projet \eida (Annexe \ref{YOLOv5Training}), pour garder traces des besoins techniques de l'entraînement, étape suivante du projet. 
-		
-		L'entraînement d'un modèle \yolov se fait à partir d'un \textit{dataset} d'images et d'étiquettes (\textit{labels}) : il s'organise ainsi en un dossier de fichiers image (au format .png ou .jpg), et un dossier de fichiers texte (au format .txt) contenant une liste d'objets. Chaque fichier texte correspond à un ou plusieurs fichiers image -- plusieurs dans le cas de numérisation d'ouvrages, notamment, qui se composent d'un fichier d'annotations par ouvrage numérisé et non par image -- et listent les objets détectés dans l'image, à raison d'une ligne par objet. L'objet est caractérisé par ses dimensions (selon un rectangle qui l'encadre) et ses coordonnées sur l'image. Par exemple, le fragment de ficher d'annotation suivant correspond aux quatre objets détectés sur la page 6 du manuscrit 5 (Alm. 1) de la Gurukul Kangri Haridwar Collection (fig. \ref{fig:annotation_ms143}) :
-		
-		\begin{lstlisting}
-			6 ms143_0006.jpg
-			243 1852 464 549
-			168 7 763 618
-			440 951 1174 1130
-			919 47 851 826\end{lstlisting}
-
-	   	\begin{figure}[H]
-			\centering
-			\includegraphics[width=15cm]{images/ms143_p6.png}
-			\caption{Objets détectés sur la page 6 du manuscrit 5 (Alm. 1) de la Gurukul Kangri Haridwar Collection }
-			\label{fig:annotation_ms143}
-		\end{figure}
+\subsection{Entraînement et \textit{fine-tuning} d'un modèle de détection}
+    \subsubsection{Démarche et volume des données}
+	L'entraînement d'un modèle sur un jeu de données spécifiques permet de préciser les tâches effectuées et d'obtenir un modèle adapté aux besoins spécifiques de chaque projet. L'utilisation d'un modèle pré-entraîné permet, comme mentionné précédemment, de pallier aux limites de jeux de données avec trop peu d'exemples, en exploitant les représentations apprises précédemment et en les spécialisant sur les données spécifiques du projet qui l'utilise.
 	
-		À partir de cet ensemble d'images et d'annotations, l'entraînement peut être effectué : \yolov prévoit un script pour l'entraînement d'un modèle, dont seuls les paramètres doivent être modifiés pour l'adapter aux besoins du projet. Ainsi, les modèles de détection \textit{off-the-shelf} tels que \yolo ou \docex prévoient la possibilité d'un entraînement, simplifié par la mise à disposition d'outils permettant d'effectuer cette étape en écrivant peu de code. Cette volonté de rendre accessible des outils adaptables, construits comme un socle solide pour des objectifs variés, permet l'intégration de la vision artificielle à des projets divers, sans demander de ces derniers de créer ou d'entraîner de zéro des réseaux de neurones ou des modèles de détections. La détection étant, en effet, une tâche de base de la vision par ordinateur, il est peu pertinent d'allouer des ressources pour reproduire des techniques déjà appliquées par de nombreux projets, et les outils \textit{off-the-shelf} offrent donc la liberté d'envisager la vision artificielle comme élément d'une chaîne de traitement des sources en allégeant les besoins et ressources -- notamment humains et temporels -- que demandent le développement et l'application de ces techniques. 
+	\begin{figure}[H]
+		\begin{subfigure}{1\linewidth}
+			\centering
+			\includegraphics[width=10cm]{images/ms40_p28_docext.png}
+			\subcaption{p. 28, \docex}
+		\end{subfigure}
+		\hspace{1pt}
+		\begin{subfigure}{1\linewidth}
+			\centering
+			\includegraphics[width=10cm]{images/ms40_p28_yolov5.png}
+			\subcaption{p. 28, \yolov}
+		\end{subfigure}
+		\begin{subfigure}{1\linewidth}
+			\centering
+			\includegraphics[width=10cm]{images/ms40_p45_docext.png}
+			\subcaption{p. 45, \docex}
+		\end{subfigure}
+		\hspace{1pt}
+		\begin{subfigure}{1\linewidth}
+			\centering
+			\includegraphics[width=10cm]{images/ms40_p45_yolov5.png}
+			\subcaption{p. 45, \docex}
+		\end{subfigure}
+		\caption{Diagrammes détectés par les modèles \yolov et \docex dans deux pages du manuscrit hebr. Or. fol. 1054 de la Staatsbibliotek (Berlin).}
+		\label{fig:performances_modeles}
+	\end{figure}
 
-        \subsubsection{Sur-ajustement et diversité des exemples}
-		
-		L'utilisation d'un modèle pré-entraîné permet d'obtenir un modèle de détection fonctionnel malgré une faible quantité de données disponible, puisque celui-ci a la capacité de généraliser les caractéristiques apprises à partir des données de pré-entraînement et de les appliquer aux données spécifiques du projet. Un trop faible volume de données présente en effet le risque de produire un modèle peu performant à cause du sur-ajustement (ou \textit{overfitting})) : on parle de sur-ajustement lorsqu'un modèle est bien ajusté aux données d'entraînement, mais incapable de généraliser face à de nouvelles données\footcite{cholletApprentissageProfondAvec2020a}. 
-		
-		Il est crucial de prévoir, lors de la constitution du jeu de données d'entraînement, une portion dédiée à la validation : on considère généralement que 20\% du jeu de données total est un volume suffisant pour cette étape. Les données de validation sont des données -- dans le cas de la détection, des images et annotations produites par des humains -- qui n'ont jamais été vues par le modèle et n'ont donc pas été utilisées pour l'entraînement. Comme les données d'entraînement, ces données de validations doivent être représentatives et diversifiées, puisqu'elles permettent de vérifier les performances du modèles, et d'identifier un sur-ajustement si le modèle ne donne pas, après entraînement, des résultats satisfaisants sur cet ensemble. Les données de validation permettent de mettre en avant les pertes à mesure que le modèle s'ajuste aux données d'entraînement\footcite{carremansHandlingOverfittingDeep2019}.
-		
-		Pour prévenir le sur-ajustement d'un modèle\footnote{Il existe diverses méthodes pour corriger le sur-ajustement d'un modèle de détection après entraînement, cependant, ce mémoire traitant de l'intégration de la vision artificielle à une chaîne de traitement des sources par le prisme du lien avec les équipes de recherche en histoire, nous n'aborderons pas ces questions qui concernent plus spécifiquement les aspects techniques de la création d'un modèle de détection. \cite{carremansHandlingOverfittingDeep2019}}, il est nécessaire de prévoir un jeu de données d'entraînement au volume suffisant -- supérieur à plusieurs milliers d'exemples dans le cas d'images\footnote{Le projet \eida compte plusieurs dizaines de milliers de pages dans son jeu de données d'entraînement.} -- et à la diversité représentative des données que le modèle pourra rencontrer. Le modèle de détection entraîné présente une capacité de généralisation qui rend son application pertinente pour le traitement des sources : l'entraînement d'un modèle \textit{off-the-shelf} permet ainsi de partir d'un modèle relativement performant dans des contextes variés et d'obtenir un modèle répondant aux besoins du projet, en trouvant l'équilibre entre manque d'ajustement et sur-ajustement.
+	Les modèles de détection \textit{off-the-shelf} comme \yolov prévoient souvent un \textit{workflow} pour l'entraînement du modèle\footcite{sharmaTrainingYOLOv5Object2022} par des projets qui souhaiteraient le spécialiser. Ainsi, dans le cas de \yolov, l'entraînement étant prévu par les développements mis à disposition par Ultralytics, il est nécessaire pour les ingénieurs de prévoir des jeux de données d'entraînement adaptés au format requis par le modèle\footnote{Les projets \vhs et \eida emploient tous deux \yolov comme modèle, ou \docex intégré au \textit{workflow} développé par Ultralytics pour \yolov : la structure des jeux de données d'entraînement est donc la même pour les deux modèles.} : l'annotation par les chercheurs doit donc être effectuée en prenant en compte ces restrictions, et les outils développés par les ingénieurs pour l'annotation des images doivent avoir pour sortie des fichiers aux formats appropriés. Un document de spécification sur les formats d'image et d'annotation a été réalisé dans le cadre du projet \eida (Annexe \ref{YOLOv5Training}), pour garder traces des besoins techniques de l'entraînement, étape suivante du projet. 
+	
+	L'entraînement d'un modèle \yolov se fait à partir d'un \textit{dataset} d'images et d'étiquettes (\textit{labels}) : il s'organise ainsi en un dossier de fichiers image (au format .png ou .jpg), et un dossier de fichiers texte (au format .txt) contenant une liste d'objets. Chaque fichier texte correspond à un ou plusieurs fichiers image -- plusieurs dans le cas de numérisation d'ouvrages, notamment, qui se composent d'un fichier d'annotations par ouvrage numérisé et non par image -- et listent les objets détectés dans l'image, à raison d'une ligne par objet. L'objet est caractérisé par ses dimensions (selon un rectangle qui l'encadre) et ses coordonnées sur l'image. Par exemple, le fragment de ficher d'annotation suivant correspond aux quatre objets détectés sur la page 6 du manuscrit 5 (Alm. 1) de la Gurukul Kangri Haridwar Collection (fig. \ref{fig:annotation_ms143}) :
+	
+	\begin{lstlisting}
+		6 ms143_0006.jpg
+		243 1852 464 549
+		168 7 763 618
+		440 951 1174 1130
+		919 47 851 826\end{lstlisting}
+
+   	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm]{images/ms143_p6.png}
+		\caption{Objets détectés sur la page 6 du manuscrit 5 (Alm. 1) de la Gurukul Kangri Haridwar Collection }
+		\label{fig:annotation_ms143}
+	\end{figure}
+
+	À partir de cet ensemble d'images et d'annotations, l'entraînement peut être effectué : \yolov prévoit un script pour l'entraînement d'un modèle, dont seuls les paramètres doivent être modifiés pour l'adapter aux besoins du projet. Ainsi, les modèles de détection \textit{off-the-shelf} tels que \yolo ou \docex prévoient la possibilité d'un entraînement, simplifié par la mise à disposition d'outils permettant d'effectuer cette étape en écrivant peu de code. Cette volonté de rendre accessible des outils adaptables, construits comme un socle solide pour des objectifs variés, permet l'intégration de la vision artificielle à des projets divers, sans demander de ces derniers de créer ou d'entraîner de zéro des réseaux de neurones ou des modèles de détections. La détection étant, en effet, une tâche de base de la vision par ordinateur, il est peu pertinent d'allouer des ressources pour reproduire des techniques déjà appliquées par de nombreux projets, et les outils \textit{off-the-shelf} offrent donc la liberté d'envisager la vision artificielle comme élément d'une chaîne de traitement des sources en allégeant les besoins et ressources -- notamment humains et temporels -- que demandent le développement et l'application de ces techniques. 
+
+    \subsubsection{Sur-ajustement et diversité des exemples}
+	
+	L'utilisation d'un modèle pré-entraîné permet d'obtenir un modèle de détection fonctionnel malgré une faible quantité de données disponible, puisque celui-ci a la capacité de généraliser les caractéristiques apprises à partir des données de pré-entraînement et de les appliquer aux données spécifiques du projet. Un trop faible volume de données présente en effet le risque de produire un modèle peu performant à cause du sur-ajustement (ou \textit{overfitting})) : on parle de sur-ajustement lorsqu'un modèle est bien ajusté aux données d'entraînement, mais incapable de généraliser face à de nouvelles données\footcite{cholletApprentissageProfondAvec2020a}. 
+	
+	Il est crucial de prévoir, lors de la constitution du jeu de données d'entraînement, une portion dédiée à la validation : on considère généralement que 20\% du jeu de données total est un volume suffisant pour cette étape. Les données de validation sont des données -- dans le cas de la détection, des images et annotations produites par des humains -- qui n'ont jamais été vues par le modèle et n'ont donc pas été utilisées pour l'entraînement. Comme les données d'entraînement, ces données de validations doivent être représentatives et diversifiées, puisqu'elles permettent de vérifier les performances du modèles, et d'identifier un sur-ajustement si le modèle ne donne pas, après entraînement, des résultats satisfaisants sur cet ensemble. Les données de validation permettent de mettre en avant les pertes à mesure que le modèle s'ajuste aux données d'entraînement\footcite{carremansHandlingOverfittingDeep2019}.
+	
+	Pour prévenir le sur-ajustement d'un modèle\footnote{Il existe diverses méthodes pour corriger le sur-ajustement d'un modèle de détection après entraînement, cependant, ce mémoire traitant de l'intégration de la vision artificielle à une chaîne de traitement des sources par le prisme du lien avec les équipes de recherche en histoire, nous n'aborderons pas ces questions qui concernent plus spécifiquement les aspects techniques de la création d'un modèle de détection. \cite{carremansHandlingOverfittingDeep2019}}, il est nécessaire de prévoir un jeu de données d'entraînement au volume suffisant -- supérieur à plusieurs milliers d'exemples dans le cas d'images\footnote{Le projet \eida compte plusieurs dizaines de milliers de pages dans son jeu de données d'entraînement.} -- et à la diversité représentative des données que le modèle pourra rencontrer. Le modèle de détection entraîné présente une capacité de généralisation qui rend son application pertinente pour le traitement des sources : l'entraînement d'un modèle \textit{off-the-shelf} permet ainsi de partir d'un modèle relativement performant dans des contextes variés et d'obtenir un modèle répondant aux besoins du projet, en trouvant l'équilibre entre manque d'ajustement et sur-ajustement.

@@ -4,29 +4,30 @@
 \usepackage{fontspec}
 \usepackage{lmodern}
 \usepackage[english,french]{babel}
-\usepackage{xspace} % pour la gestion des espaces après les commandes
-%\usepackage{minted} % colored source code
-\usepackage{csquotes} % Gestion des guillemets dans la biblio
-\usepackage[xetex]{graphicx} %Package pour gérer les images
+\usepackage{xspace} % Pour la gestion des espaces après les commandes
+\usepackage{csquotes} % Gestion des guillemets dans la biblio et citations
+\usepackage[xetex]{graphicx} % Package pour gérer les images
 \usepackage{caption}
-\usepackage{subcaption}
-\usepackage{float} %Gestion de la position des images
-\usepackage{listings}
-\usepackage{xcolor}
+\usepackage{subcaption} % Package pour les subfigures
+\usepackage{float} % Gestion de la position des images
+\usepackage{listings} % Blocs de code
+\usepackage{xcolor} % Couleurs des blocs de code
+\usepackage{pdfpages} % Insertion de PDF dans le fichier
 
-%Couleurs des blocs de code
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+% Couleurs des blocs de code
+\definecolor{ferngreen}{rgb}{0.31, 0.47, 0.26}
+\definecolor{codegray}{rgb}{0.44, 0.5, 0.56}
+\definecolor{sinopia}{rgb}{0.8, 0.25, 0.04}
+\definecolor{silver}{rgb}{0.95, 0.95, 0.95}
+\definecolor{bondiblue}{rgb}{0.0, 0.58, 0.71}
 
 %Style des blocs de code
-\lstdefinestyle{mystyle}{
-	backgroundcolor=\color{backcolour},   
-	commentstyle=\color{codegreen},
-	keywordstyle=\color{magenta},
+\lstdefinestyle{code-memoire}{
+	backgroundcolor=\color{silver},   
+	commentstyle=\color{codegray},
+	keywordstyle=\color{sinopia},
 	numberstyle=\tiny\color{codegray},
-	stringstyle=\color{codepurple},
+	stringstyle=\color{ferngreen},
 	basicstyle=\ttfamily\footnotesize,
 	breakatwhitespace=false,         
 	breaklines=true,                 
@@ -40,26 +41,30 @@
 	tabsize=2
 }
 
-\lstset{style=mystyle}
+\lstset{style=code-memoire}
 
 \usepackage{hyperref}
 \hypersetup{%
-	pdfusetitle, 
 	pdfauthor={Jade Norindr}
 	pdfsubject={Mémoire TNAH — Le traitement des sources historiques par la vision artificielle}, 
-	pdfkeywords={vision artificielle}
+	pdfkeywords={vision artificielle, apprentissage profond, API, histoire des sciences}
 }
 
 % Mise en page École des chartes
 \usepackage[margin=2.5cm]{geometry} % marges
 \usepackage{setspace}
-\onehalfspacing % interligne de 1.5
+\onehalfspacing % Interligne de 1.5
 \setlength\parindent{1cm}
 
+% Bibliographies
 \usepackage{tocbibind}
-\usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
-\addbibresource{bibliographie/bibliographie.bib}
-%\nocite{*}
+\usepackage[backend=biber, sorting=nyt, style=enc, minbibnames=10, maxbibnames=10]{biblatex}
+\addbibresource{bibliographie/humanum.bib}
+\addbibresource{bibliographie/ml.bib}
+\addbibresource{bibliographie/technique.bib}
+\addbibresource{bibliographie/astronomie.bib}
+\addbibresource{bibliographie/websites.bib}
+\nocite{*}
 \defbibnote{intro}{Cette bibliographie présente toutes les ressources utilisées, de tout type, citées ou non, par simple ordre alphabétique.}
 
 
@@ -71,70 +76,70 @@
 \makeglossaries
 
 \setacronymstyle{short-long}
-\newacronym{api}{\textsc{api}}{\emph{Application Programming Interface}}
-\newacronym{eida}{\textsc{eida}}{\emph{Editing and analysing hIstorical astronomical Diagrams with Artificial intelligence}}
-\newacronym{dishas}{\textsc{dishas}}{\emph{Digital Information System for the History of Astral Sciences}}
-\newacronym{dti}{\textsc{dti}}{\emph{DISHAS Table Interface}}
-\newacronym{dips}{\textsc{dips}}{\emph{DISHAS Interactive Parameter Squeezer}}
-\newacronym{xml}{\textsc{xml}}{\emph{eXtensible Markup Language}}
-\newacronym{csv}{\textsc{csv}}{\emph{Comma-separated values}}
-\newacronym{html}{\textsc{html}}{\emph{HyperText Markup Language}}
-\newacronym{htr}{\textsc{htr}}{\emph{Handwritten Text Recognition}}
-\newacronym{imagine}{\textsc{imagine}}{Laboratoire d’Informatique Gaspard Monge}
-\newacronym{vhs}{\textsc{vhs}}{Vision artificielle et analyse Historique de la circulation de l'illustration Scientifique}
-\newacronym{syrte}{\textsc{syrte}}{Systèmes de Référence Temps-Espace}
-\newacronym{iscd}{\textsc{iscd}}{Institut des sciences du calcul et des données}
+\newacronym{api}{API}{\emph{Application Programming Interface}}
 \newacronym{bnf}{BnF}{Bibliothèque nationale de France}
-\newacronym{inha}{\textsc{inha}}{Institut national d'histoire de l'art}
-\newacronym{enc}{\textsc{enc}}{École nationale des chartes}
-\newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
-\newacronym{iiif}{\textsc{iiif}}{\emph{International Image Interoperability Framework}}
-\newacronym{http}{\textsc{http}}{\emph{Hypertext Transfer Protocol}}
-\newacronym{https}{\textsc{https}}{\emph{Hypertext Transfer Protocol Secure}}
-\newacronym{uri}{\textsc{uri}}{\emph{Uniform Resource Identifier}}
-\newacronym{json}{\textsc{json}}{\emph{JavaScript Object Notation}}
-\newacronym{svg}{\textsc{svg}}{\emph{Scalable Vector Graphics}}
+\newacronym{cnn}{CNN}{Convolutional Neural Nets}
+\newacronym{cpu}{CPU}{\textit{Central Processing Unit}}
+\newacronym{csv}{CSV}{\emph{Comma-separated values}}
+\newacronym{dips}{DIPS}{\emph{DISHAS Interactive Parameter Squeezer}}
+\newacronym{dishas}{DISHAS}{\emph{Digital Information System for the History of Astral Sciences}}
+\newacronym{dti}{DTI}{\emph{DISHAS Table Interface}}
+\newacronym{eida}{EIDA}{\emph{Editing and analysing hIstorical astronomical Diagrams with Artificial intelligence}}
+\newacronym{enc}{ENC}{École nationale des chartes}
 \newacronym{enherit}{EnHerit}{\emph{Enhancing Heritage Image Databases}}
-\newacronym{cnn}{\textsc{cnn}}{Convolutional Neural Nets}
-\newacronym{yolo}{\textsc{yolo}}{\textit{You Only Look Once}}
-\newacronym{gpu}{\textsc{gpu}}{\textit{Graphics Processing Unit}}
-\newacronym{cpu}{\textsc{cpu}}{\textit{Central Processing Unit}}
-\newacronym{url}{\textsc{url}}{\textit{Uniform Resource Locator}}
-\newacronym{ssh}{\textsc{ssh}}{\textit{Secure Shell}}
-\newacronym{rest}{\textsc{rest}}{\textit{Representational state transfer}}
-
-
-% Acronymes en petites capitales dans la liste des acronymes
-\usepackage{enumitem}
-\setlist[description]{labelwidth=2em, labelsep=.5em, font=\normalfont}
+\newacronym{gpu}{GPU}{\textit{Graphics Processing Unit}}
+\newacronym{html}{HTML}{\emph{HyperText Markup Language}}
+\newacronym{htr}{HTR}{\emph{Handwritten Text Recognition}}
+\newacronym{http}{HTTP}{\emph{Hypertext Transfer Protocol}}
+\newacronym{https}{HTTPS}{\emph{Hypertext Transfer Protocol Secure}}
+\newacronym{iiif}{IIIF}{\emph{International Image Interoperability Framework}}
+\newacronym{imagine}{IMAGINE}{Laboratoire d’Informatique Gaspard Monge}
+\newacronym{inha}{INHA}{Institut national d'histoire de l'art}
+\newacronym{iscd}{ISCD}{Institut des sciences du calcul et des données}
+\newacronym{json}{JSON}{\emph{JavaScript Object Notation}}
+\newacronym{rest}{REST}{\textit{Representational state transfer}}
+\newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
+\newacronym{ssh}{SSH}{\textit{Secure Shell}}
+\newacronym{svg}{SVG}{\emph{Scalable Vector Graphics}}
+\newacronym{syrte}{SYRTE}{Systèmes de Référence Temps-Espace}
+\newacronym{tei}{TEI}{\textit{Text Encoding Initiative}}
+\newacronym{uri}{URI}{\emph{Uniform Resource Identifier}}
+\newacronym{url}{URL}{\textit{Uniform Resource Locator}}
+\newacronym{vhs}{VHS}{Vision artificielle et analyse Historique de la circulation de l'illustration Scientifique}
+\newacronym{xml}{XML}{\emph{eXtensible Markup Language}}
+\newacronym{yolo}{YOLO}{\textit{You Only Look Once}}
 
 % Commandes
-\newcommand{\rest}{\gls{rest}\xspace}
-\newcommand{\gpu}{\gls{gpu}\xspace}
-\newcommand{\cpu}{\gls{cpu}\xspace}
-\newcommand{\ssh}{\gls{ssh}\xspace}
-\newcommand{\URL}{\gls{url}\xspace}
-\newcommand{\yolo}{\gls{yolo}\xspace}
-\newcommand{\yolov}{\textsc{yolo}v5\xspace}
-\newcommand{\docex}{docExtractor\xspace}
-\newcommand{\exapi}{extractorAPI\xspace}
+\newcommand{\api}{\gls{api}\xspace}
+\newcommand{\bnf}{\gls{bnf}\xspace}
 \newcommand{\cnn}{\gls{cnn}\xspace}
-\newcommand{\imagine}{\gls{imagine}\xspace}
+\newcommand{\cpu}{\gls{cpu}\xspace}
+\newcommand{\cv}{\textit{computer vision}\xspace}
+\newcommand{\dishas}{\gls{dishas}\xspace}
+\newcommand{\dl}{\textit{deep learning}\xspace}
+\newcommand{\docex}{docExtractor\xspace}
+\newcommand{\eida}{\gls{eida}\xspace}
+\newcommand{\enc}{\gls{enc}\xspace}
 \newcommand{\enherit}{\gls{enherit}\xspace}
-\newcommand{\svg}{\gls{svg}\xspace}
-\newcommand{\json}{\gls{json}\xspace}
-\newcommand{\uri}{\gls{uri}\xspace}
-\newcommand{\iiif}{\gls{iiif}\xspace}
+\newcommand{\exapi}{extractorAPI\xspace}
+\newcommand{\gpu}{\gls{gpu}\xspace}
 \newcommand{\http}{\gls{http}\xspace}
 \newcommand{\https}{\gls{https}\xspace}
-\newcommand{\bnf}{\gls{bnf}\xspace}
+\newcommand{\ia}{intelligence artificielle\xspace}
+\newcommand{\iiif}{\gls{iiif}\xspace}
+\newcommand{\imagine}{\gls{imagine}\xspace}
 \newcommand{\inha}{\gls{inha}\xspace}
-\newcommand{\enc}{\gls{enc}\xspace}
+\newcommand{\json}{\gls{json}\xspace}
+\newcommand{\ml}{\textit{machine learning}\xspace}
 \newcommand{\ponts}{École des Ponts ParisTech\xspace}
-\newcommand{\api}{\gls{api}\xspace}
-\newcommand{\eida}{\gls{eida}\xspace}
+\newcommand{\rest}{\gls{rest}\xspace}
+\newcommand{\ssh}{\gls{ssh}\xspace}
+\newcommand{\svg}{\gls{svg}\xspace}
+\newcommand{\uri}{\gls{uri}\xspace}
+\newcommand{\URL}{\gls{url}\xspace}
 \newcommand{\vhs}{\gls{vhs}\xspace}
-\newcommand{\dishas}{\gls{dishas}\xspace}
+\newcommand{\yolo}{\gls{yolo}\xspace}
+\newcommand{\yolov}{YOLOv5\xspace}
 \newcommand{\ist}{\textsc{i}\ieme{}\xspace}
 \newcommand{\ii}{\textsc{ii}\ieme{}\xspace}
 \newcommand{\viii}{\textsc{viii}\ieme{}\xspace}
@@ -147,12 +152,10 @@
 \newcommand{\xviii}{\textsc{xviii}\ieme{}\xspace}
 \newcommand{\jc}{av. J.-C.\xspace}
 \newcommand{\ma}{Moyen-Âge\xspace}
-\newcommand{\ml}{\textit{machine learning}\xspace}
-\newcommand{\dl}{\textit{deep learning}\xspace}
-\newcommand{\cv}{\textit{computer vision}\xspace}
-\newcommand{\ia}{intelligence artificielle\xspace}
 
+% Page à blanc sans en-tête et bas de page
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
 % Pour des chapitres non numérotées dans la table des matière
 \newcommand\chapterNo[1]{
   \chapter*{#1}
@@ -160,9 +163,7 @@
 }
 
 \begin{document}
-
-\onehalfspacing 
-
+\onehalfspacing
 \frontmatter
 
     \include{templates/page-titre}
@@ -175,13 +176,19 @@
     \chapterNo{Remerciements}
     \addcontentsline{toc}{chapter}{Remerciements}
 
-    \printbibliography
-
+    \printbibliography[keyword={DH},title={Humanités numériques}]
+    \clearemptydoublepage
+    \printbibliography[keyword={ml},title={\textit{Machine learning}, \textit{deep learning} et vision artificielle}]
+    \clearemptydoublepage
+    \printbibliography[keyword={technique},title={Documentation technique et méthode}]
+    \clearemptydoublepage
+    \printbibliography[keyword={astronomie},title={Histoire de l'astronomie}]
+    \clearemptydoublepage
+    
     \chapterNo{Introduction}
     \addcontentsline{toc}{chapter}{Introduction}
 
-    \thispagestyle{empty}
-    \cleardoublepage
+    \clearemptydoublepage
 
 \mainmatter
 
@@ -205,7 +212,7 @@
                 \section{L’image comme source}
                     \input{templates/partie1/chap2/section1}
             
-                \section{Le standard IIIF}
+                \section{\label{stardardIiif}Le standard IIIF}
                     \input{templates/partie1/chap2/section2}
         \\
         
@@ -219,7 +226,7 @@
                 \section{Dimensions et cadre}
                     \input{templates/partie1/chap3/section1}
             
-                \section{Objectifs scientifiques et possibilités numériques}
+                \section{\label{objectifsPossibilites}Objectifs scientifiques et possibilités numériques}
                     \input{templates/partie1/chap3/section2}
         \\
         
@@ -253,8 +260,9 @@
                     \input{templates/partie2/chap5/section2}
         \\
         
-        L'\textit{open source} est une préoccupation centrale lors du développement d'outil pour les projets de recherche : il est en effet souhaitable de produire, dans la mesure du possible, des applications réutilisables par des projets futurs, pour assurer une continuité dans les travaux produits sans que se démultiplient les développements d'outils similaires. Ainsi, le remploi du code est au cœur des ambitions des équipes d'ingénierie : l'intégration de l'apprentissage profond à des projets d'histoire nécessite des outils spécifiques, construits autour de ces traitements des sources par l'\ia, qui restent néanmoins similaires -- ou comparables dans leurs besoins techniques -- d'un projet à l'autre. L'utilisation d'un \gpu pour la vision artificielle compte parmi les besoins matériels qui se traduisent entre les projets, ainsi, dans une optique de programmation modulaire, une \api externe à l'application \vhs/\eida a été développée pour répondre à ce besoin, sans être hautement spécifique aux besoins de ces projets comme pourrait l'être un module intégré à l'application. \exapi, l'\api développée dans ce cadre, est ainsi conçue, dès son cahier des charges, pour répondre aux besoins du projet \eida tout en restant réemployable dans d'autres contextes -- sont ainsi utilisés, pour sa construction, des outils libres qui en standardisent le développement, avec la vocation de produire une \api aussi flexible que robuste.
-        
+        L'\textit{open source}\footnote{Le terme d'\textit{open source}, ou code source ouvert, désigne la pratique de mise à disposition du code source d'un logiciel sous licence libre, pour permettre gratuitement sa réutilisation, sa distribution et sa modification.} est une préoccupation centrale lors du développement d'outil pour les projets de recherche : il est en effet souhaitable de produire, dans la mesure du possible, des applications réutilisables par des projets futurs, pour assurer une continuité dans les travaux produits sans que se démultiplient les développements d'outils similaires. Ainsi, le remploi du code est au cœur des ambitions des équipes d'ingénierie : l'intégration de l'apprentissage profond à des projets d'histoire nécessite des outils spécifiques, construits autour de ces traitements des sources par l'\ia, qui restent néanmoins similaires -- ou comparables dans leurs besoins techniques -- d'un projet à l'autre. L'utilisation d'un \gpu pour la vision artificielle compte parmi les besoins matériels qui se traduisent entre les projets, ainsi, dans une optique de programmation modulaire, une \api externe à l'application \vhs/\eida a été développée pour répondre à ce besoin, sans être hautement spécifique aux besoins de ces projets comme pourrait l'être un module intégré à l'application. \exapi, l'\api développée dans ce cadre, est ainsi conçue, dès son cahier des charges, pour répondre aux besoins du projet \eida tout en restant réemployable dans d'autres contextes -- sont ainsi utilisés, pour sa construction, des outils libres qui en standardisent le développement, avec la vocation de produire une \api aussi flexible que robuste.
+        \clearemptydoublepage
+            
       	\chapter[\textit{Computer vision} et pratiques des chercheurs]{Intégrer la vision artificielle aux pratiques des chercheurs}
       	
       	Le chapitre précédent établit, du point de vue du \textit{back end}, les besoins techniques pour l'intégration de la vision artificielle à une chaîne de traitement des sources historiques : ces préoccupations en termes d'architecture et de puissance de calcul sont celles des équipes d'ingénierie, et existent en parallèle des préoccupations qui concernent plus directement les utilisateurs, et impactent réellement les pratiques des chercheurs. Ce chapitre revient ainsi sur la chaîne de traitement des sources historiques dans sa totalité, depuis la numérisation fournie par l'utilisateur jusqu'aux résultats retournés pour le traitement par les chercheurs, et sur les échanges avec les utilisateurs, en termes d'interface mais également en termes de médiation.
@@ -264,24 +272,31 @@
              
                 \section{Médiation et documentation}
                     \input{templates/partie2/chap6/section2}
+        \\
+        
+        L'intégration de la vision artificielle aux pratiques des chercheurs en humanités passe ainsi par l'établissement d'une chaîne de traitement qui trouve un équilibre entre besoins scientifiques et possibilités numériques, en mêlant étapes automatiques et correction manuelle pour s'assurer de la pertinence des données qui en découlent. L'automatisation n'est jamais totale : le traitement de sources historiques ne peut s'effectuer sans un regard critique, humain, qui contrebalance les limites de l'\ia qui ne permettent pas d'appréhender les objets étudiés sous tous les aspects nécessaires à prendre en compte dans le cadre d'une recherche historique. L'apprentissage profond et la vision artificielle s'insèrent donc dans les pratiques de chercheurs en histoire par le biais d'outils et d'interfaces qui appellent à leur contribution, à leurs corrections, et à leur regard sur les résultats produits par des algorithmes : les ingénieurs ont pour rôle, dans ce contexte, de développer des outils et pratiques qui permettent ce lien entre les méthodes et techniques du \dl et les chercheurs en humanités, et d'établir une médiation fluide qui assure la pertinence du travail produit. Au-delà de la communication avec les chercheurs, utilisateurs des interfaces, il est du devoir des ingénieurs d'assurer la pérennité des outils créés par une documentation destinée à d'autres développeurs, pour permettre la maintenance du code, ou son réemploi dans des projets extérieurs : ces bonnes pratiques assurent ainsi la vie des développements produits, et leur bonne intégration dans un contexte de recherche plus large, en tant qu'outils libres pour le traitement des sources.
             
         \clearemptydoublepage
 
     \part{Perspectives pour le traitement des sources : vers un outil pour l’édition et la recherche}
         \chapter[Éditer des diagrammes]{Éditer des diagrammes : vectorisation et édition critique}
-                \section{Édition critique des diagrammes astronomiques}
+        La partie précédente s'attache à décrire l'intégration des techniques et méthodes de la vision artificielle aux pratiques des chercheurs, en s'appuyant notamment sur le développement d'outils pour l'utilisation d'algorithmes de détection d'objets. Tâche canonique de la vision artificielle, la détection d'objets dans les images est une pratique établie, dont l'intérêt pour la navigation des corpus est avéré par un nombre certain de projets récents, tels que CorDeep\footcite{CorDeep}, ayant produit et publié des applications intégrant des algorithmes de détection d'objets pour le traitement des sources.
+        
+        La vision artificielle est riche en possibilités : au-delà des outils de détection plus accessibles -- dont des modèles \textit{off-the-shelf} existent pour les projets qui souhaiteraient l'employer -- les traitements automatiques pour l'édition ou pour l'étude critique des sources sont considérés et étudiés. La détection d'objet n'est ainsi pas considérée comme une finalité, mais comme une première étape dans une chaîne de traitement qui intègre des étapes automatique de détection de similarités, de \textit{clustering} ou de vectorisation, offrant de nouvelles perspectives dans le cadre de l'intégration de la vision artificielle à l'étude des sources. Pour des projets portés sur l'illustration scientifique, tels que le projet \eida, la vectorisation présente un intérêt particulier, ouvrant des possibilités en termes d'édition automatique des diagrammes.
+        
+                \section{Édition critique numérique des diagrammes astronomiques}
                     \input{templates/partie3/chap7/section1}
             
-                \section[De l’image aux vecteurs]{De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
+                \section[De l’image aux vecteurs]{\label{vectorEdition}De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
                     \input{templates/partie3/chap7/section2}
             
         \clearemptydoublepage
         
         \chapter{Regroupement par similarité et \textit{clustering}}
-                \section{\textit{Similarity retrieval} et navigation des corpus}
-                    \input{templates/partie3/chap8/section1}
-            
-                \section{Le \textit{clustering} comme outil pour les chercheurs}
+	             \section{Le \textit{clustering} comme outil pour les chercheurs}
+        			\input{templates/partie3/chap8/section1}
+        			
+                \section{\textit{Similarity retrieval} et analyse des corpus}
                     \input{templates/partie3/chap8/section2}
             
         \clearemptydoublepage
@@ -289,31 +304,38 @@
     \chapterNo{Conclusion}
     Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques
     \addcontentsline{toc}{chapter}{Conclusion}
-
+    \clearemptydoublepage
+    
 \appendix
     \part*{Annexes}	
     \addcontentsline{toc}{part}{Annexes}
     
     \chapter[Prepare custom data for training]{\label{YOLOv5Training}Prepare custom data for training using the YOLOv5 workflow}
 	    \input{templates/annexes/yolotraining}
+	    \clearemptydoublepage
     \chapter[Modèles de données EIDA/VHS]{\label{eidaDataModels}Modèles de données des applications VHS et EIDA}
 	    \input{templates/annexes/datamodel}
+     	\clearemptydoublepage
     \chapter{\label{exapiCahier}extractorAPI : cahier des charges}
 	    \input{templates/annexes/exapicahier}
+	    \clearemptydoublepage
 	\chapter{\label{yoloScript}Script YOLOv5 pour lancer la détection d'objet}
 		Le script suivant est une reproduction du script \texttt{detect\_vhs.py} utilisé dans \exapi pour lancer la détection d'objet dans les images envoyées par l'application : \url{https://github.com/jnorindr/extractorAPI/blob/main/yolov5/detect_vhs.py}
 		\input{templates/annexes/yoloscript}
+	    \clearemptydoublepage
+	\chapter{\label{DHSeminar}DH Seminar: extractorAPI}
+		La présentation suivante constitue le support d'un séminaire d'humanités numériques donné le 13 juin 2023 en présence de l'équipe du projet \eida. Le séminaire visait à présenter l'\api développée dans le cadre du stage.
+		\includepdf[nup=1x2,pages=-, scale=0.8, delta=0 10mm]{templates/annexes/dhseminar.pdf}
+	    \clearemptydoublepage
 	\chapter[Annotate images with extractorAPI]{\label{exapiAnno}Annotate images from EiDA with extractorAPI}
 		Ce document est extrait du Wiki de l'\api, disponible sur GitHub en accompagnement du code. Il a été rédigé pour documenter les interactions entre \exapi et l'application \eida, pour faciliter la réutilisation de l'\api par des projets tiers. Le document est disponible à l'adresse suivante : \url{https://github.com/jnorindr/extractorAPI/wiki/Annotate-images-from-EiDA-with-extractorAPI}
 		\input{templates/annexes/exapianno}
-
-\clearemptydoublepage
+		\clearemptydoublepage
 
 \backmatter
     \printacronyms[title=Liste des acronymes,toctitle=Acronymes]
-    \printglossary 
+    \printglossary
     \listoffigures
+    \clearemptydoublepage
     \tableofcontents
-
-	
 \end{document}
