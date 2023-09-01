@@ -97,6 +97,7 @@
 \newacronym{inha}{INHA}{Institut national d'histoire de l'art}
 \newacronym{iscd}{ISCD}{Institut des sciences du calcul et des données}
 \newacronym{json}{JSON}{\emph{JavaScript Object Notation}}
+\newacronym{ransac}{RANSAC}{\textit{RANdom SAmple Consensus}}
 \newacronym{rest}{REST}{\textit{Representational state transfer}}
 \newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
 \newacronym{ssh}{SSH}{\textit{Secure Shell}}
@@ -152,6 +153,7 @@
 \newcommand{\xviii}{\textsc{xviii}\ieme{}\xspace}
 \newcommand{\jc}{av. J.-C.\xspace}
 \newcommand{\ma}{Moyen-Âge\xspace}
+\def\cdt{\kern-0.5pt\ensuremath\cdot\kern-0.5pt}
 
 % Page à blanc sans en-tête et bas de page
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
@@ -175,6 +177,12 @@
 	
     \chapterNo{Remerciements}
     \addcontentsline{toc}{chapter}{Remerciements}
+    
+    Mes remerciements vont, en premier lieu, à toutes les personnes qui m'ont accompagnée lors de cette année de Master.
+    
+    Je tiens à adresser ma reconnaissance à mon directeur, Maxime Challon, pour son encadrement et pour ses conseils précieux tout au long de la rédaction de ce mémoire, qui ont permis son aboutissement. Je remercie chaleureusement Ségolène Albouy pour le rôle de tutrice qu'elle a joué lors de ce stage, pour sa bienveillance et son implication, qui m'ont permis de penser ce mémoire dans les meilleures conditions possible. Je remercie également Matthieu Husson pour la confiance qu'il m'a accordée, qui a rendu ce stage si enrichissant, et l'ensemble de l'équipe d'Histoire des sciences de l'Observatoire de Paris pour leur accueil.
+    
+    Merci ma famille et mes ami$\cdot$e$\cdot$s pour leur soutien lors de la rédaction de ce mémoire, à Ethan et Tara pour nos sessions de travail. Je remercie, enfin, Elsa et Arthur pour leurs relectures attentives.
 
     \printbibliography[keyword={DH},title={Humanités numériques}]
     \clearemptydoublepage
@@ -275,28 +283,29 @@
         \\
         
         L'intégration de la vision artificielle aux pratiques des chercheurs en humanités passe ainsi par l'établissement d'une chaîne de traitement qui trouve un équilibre entre besoins scientifiques et possibilités numériques, en mêlant étapes automatiques et correction manuelle pour s'assurer de la pertinence des données qui en découlent. L'automatisation n'est jamais totale : le traitement de sources historiques ne peut s'effectuer sans un regard critique, humain, qui contrebalance les limites de l'\ia qui ne permettent pas d'appréhender les objets étudiés sous tous les aspects nécessaires à prendre en compte dans le cadre d'une recherche historique. L'apprentissage profond et la vision artificielle s'insèrent donc dans les pratiques de chercheurs en histoire par le biais d'outils et d'interfaces qui appellent à leur contribution, à leurs corrections, et à leur regard sur les résultats produits par des algorithmes : les ingénieurs ont pour rôle, dans ce contexte, de développer des outils et pratiques qui permettent ce lien entre les méthodes et techniques du \dl et les chercheurs en humanités, et d'établir une médiation fluide qui assure la pertinence du travail produit. Au-delà de la communication avec les chercheurs, utilisateurs des interfaces, il est du devoir des ingénieurs d'assurer la pérennité des outils créés par une documentation destinée à d'autres développeurs, pour permettre la maintenance du code, ou son réemploi dans des projets extérieurs : ces bonnes pratiques assurent ainsi la vie des développements produits, et leur bonne intégration dans un contexte de recherche plus large, en tant qu'outils libres pour le traitement des sources.
-            
         \clearemptydoublepage
 
     \part{Perspectives pour le traitement des sources : vers un outil pour l’édition et la recherche}
         \chapter[Éditer des diagrammes]{Éditer des diagrammes : vectorisation et édition critique}
         La partie précédente s'attache à décrire l'intégration des techniques et méthodes de la vision artificielle aux pratiques des chercheurs, en s'appuyant notamment sur le développement d'outils pour l'utilisation d'algorithmes de détection d'objets. Tâche canonique de la vision artificielle, la détection d'objets dans les images est une pratique établie, dont l'intérêt pour la navigation des corpus est avéré par un nombre certain de projets récents, tels que CorDeep\footcite{CorDeep}, ayant produit et publié des applications intégrant des algorithmes de détection d'objets pour le traitement des sources.
         
-        La vision artificielle est riche en possibilités : au-delà des outils de détection plus accessibles -- dont des modèles \textit{off-the-shelf} existent pour les projets qui souhaiteraient l'employer -- les traitements automatiques pour l'édition ou pour l'étude critique des sources sont considérés et étudiés. La détection d'objet n'est ainsi pas considérée comme une finalité, mais comme une première étape dans une chaîne de traitement qui intègre des étapes automatique de détection de similarités, de \textit{clustering} ou de vectorisation, offrant de nouvelles perspectives dans le cadre de l'intégration de la vision artificielle à l'étude des sources. Pour des projets portés sur l'illustration scientifique, tels que le projet \eida, la vectorisation présente un intérêt particulier, ouvrant des possibilités en termes d'édition automatique des diagrammes.
+        La vision artificielle est riche en possibilités : au-delà des outils de détection plus accessibles -- dont des modèles \textit{off-the-shelf} existent pour les projets qui souhaiteraient l'employer -- les traitements automatiques pour l'édition ou pour l'étude critique des sources sont considérés et étudiés. La détection d'objet n'est ainsi pas considérée comme une finalité, mais comme une première étape dans une chaîne de traitement qui intègre des étapes automatique de détection de similarités, de \textit{clustering} ou de vectorisation\footnote{Par vectorisation, nous entendons la transcription de numérisations de diagrammes géométriques en images \svg.}, offrant de nouvelles perspectives dans le cadre de l'intégration de la vision artificielle à l'étude des sources. Pour des projets portés sur l'illustration scientifique, tels que le projet \eida, la vectorisation présente un intérêt particulier, ouvrant des possibilités en termes d'édition automatique des diagrammes.
         
-                \section{Édition critique numérique des diagrammes astronomiques}
+                \section{Édition numérique des diagrammes astronomiques}
                     \input{templates/partie3/chap7/section1}
             
                 \section[De l’image aux vecteurs]{\label{vectorEdition}De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
                     \input{templates/partie3/chap7/section2}
-            
+        \\
+        
+        La vectorisation automatique de diagrammes géométriques ouvre de nombreuses perspectives en termes de soutien à la recherche, et permet d'envisager des outils et interfaces à destination des chercheurs qui proposeraient d'automatiser des tâches autrement chronophage. La transcription des diagrammes, en lien avec l'histoire récente de l'édition critique de ce type d'illustration, fait l'objet d'un nombre restreint -- si ce n'est inexistant -- de normes qui en encadrent la pratique : les méthodes appliquées pour la transcription et l'édition numérique sont donc chronophages, variées, spécifiques aux projets qui les emploient, et les objets informatiques générés ne sont pas nécessairement manipulables ou interopérables. Le \svg, format libre, est particulièrement appropriés pour l'étude des diagrammes : la transformation d'une numérisation en objet vectoriel devient alors une étape clé de la chaîne de traitement. Manuellement, cette dernière est chronophage, et demande la connaissance d'outils spécifiques pour cette pratique. Ainsi, l'intégration à cette chaîne de traitement d'algorithmes de \cv permet de l'envisager comme une pratique systématique, rendant possible la transcription d'un volume important d'images en un temps moindre. La création d'outils libres, accessibles et aisés à prendre en main intégrant ces méthodes a vocation à faciliter cette étape chronophage du processus d'édition, et de permettre une analyse des diagrammes tirant réellement parti des avantages du numérique.    
         \clearemptydoublepage
         
-        \chapter{Regroupement par similarité et \textit{clustering}}
-	             \section{Le \textit{clustering} comme outil pour les chercheurs}
+        \chapter{Détection de similarité et \textit{clustering}}
+	             \section{Trouver des motifs dans les données : le \textit{clustering}}
         			\input{templates/partie3/chap8/section1}
         			
-                \section{\textit{Similarity retrieval} et analyse des corpus}
+                \section{\textit{Similarity retrieval} et étude de la circulation des idées}
                     \input{templates/partie3/chap8/section2}
             
         \clearemptydoublepage
