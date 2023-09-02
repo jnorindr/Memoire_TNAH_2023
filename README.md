@@ -35,9 +35,9 @@ Ce dépôt contient l'ensemble des documents liés au mémoire de stage rédigé
 #### III.1. Éditer des diagrammes : vectorisation et édition critique
 * III.1.1. Édition numérique des diagrammes astronomiques
 * III.1.2. De l’image aux vecteurs : la vision artificielle pour l’édition numérique
-#### III.2. Détection de similarité et _clustering_
-* III.2.1. _Similarity retrieval_ et étude de la circulation des idées
-* III.2.2. Trouver des motifs dans les données : le _clustering_
+#### III.2. Détection de similarité et partitionnement de données
+* III.2.1. La détection de similarités pour l'étude de la circulation des images
+* III.2.2. Le partitionnement de données : découvrir des motifs dans un corpus
 
 ## Livrables techniques
 ### extractorAPI
