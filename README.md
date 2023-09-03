@@ -9,7 +9,7 @@ Ce dépôt contient l'ensemble des documents liés au mémoire de stage rédigé
 * `livrables` : livrables techniques réalisés lors du stage.
 
 ## Table des matières
-### I. Construire une plateforme pour la détection : outils, interfaces et modèles de données
+### I. Construire un corpus de numérisations pour le traitement par vision artificielle
 #### I.1. Le projet EiDA
 * I.1.1. Contexte et objectifs du projet
 * I.1.2. Sources primaires
