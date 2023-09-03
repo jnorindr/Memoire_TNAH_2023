@@ -13,7 +13,7 @@
 		\label{fig:detection_workflow}
 	\end{figure}
 
-	En premier lieu, depuis l'interface d'ajout d'un objet de l'application \eida (fig. \ref{fig:eida_list}), l'utilisateur remplit un formulaire de signalement du témoin avec un ensemble de métadonnées descriptives, et attache à ce formulaire une numérisation sous forme de manifeste \iiif, de fichier PDF ou d'un ensemble d'images aux formats JPEG ou PNG. Lorsque le formulaire est soumis, l'application retourne à l'utilisateur un message flash qui l'informe qu'un délai est nécessaire au traitement de la source, et que la numérisation annotée sera mise à disposition après finalisation de la détection. En parallèle, les images de la numérisation sont enregistrées : cette chaîne de traitement varie en fonction du format du fichier soumis par l'utilisateur\footnote{Les manifestes \iiif sont parsés pour en extraire les images, et les fichiers PDF sont fragmentés en une image par page et convertis en images au format PNG.}, et le résultat souhaité est l'enregistrement sur le serveur d'un fichier image par page de la numérisation.
+	En premier lieu, depuis l'interface d'ajout d'un objet de l'application \eida (fig. \ref{fig:eida_list}), l'utilisateur remplit un formulaire de signalement du témoin avec un ensemble de métadonnées descriptives, et attache à ce formulaire une numérisation sous forme de manifeste \iiif, de fichier PDF ou d'un ensemble d'images aux formats \acrshort{jpeg} ou \acrshort{png}. Lorsque le formulaire est soumis, l'application retourne à l'utilisateur un message flash qui l'informe qu'un délai est nécessaire au traitement de la source, et que la numérisation annotée sera mise à disposition après finalisation de la détection. En parallèle, les images de la numérisation sont enregistrées : cette chaîne de traitement varie en fonction du format du fichier soumis par l'utilisateur\footnote{Les manifestes \iiif sont parsés pour en extraire les images, et les fichiers PDF sont fragmentés en une image par page et convertis en images au format PNG.}, et le résultat souhaité est l'enregistrement sur le serveur d'un fichier image par page de la numérisation.
 	
 	\begin{figure}[h]
 		\centering
@@ -44,7 +44,7 @@
    	
     Face à ce constat, il est nécessaire, pour les ingénieurs, de concevoir une chaîne de traitement qui va au-delà des étapes automatisées, et qui prend en compte la nécessité d'interventions manuelles entre chaque traitement pour un ajustement des résultats et une analyse primaire des données de sortie. Pour espérer produire des recherches aux résultats pertinents, il est ainsi nécessaire de savoir intégrer l'outil qu'est le \dl à un \textit{workflow}, et de trouver l'équilibre entre automatisation et tâches manuelles.
 	
-	La chaîne de traitement proposée par \eida propose ainsi une alternance d'étapes automatisées, en bleu sur le schéma, et d'étapes d'analyse par les chercheurs du projet, en jaune et orange (fig. \ref{fig:eida_workflow}).
+	La chaîne de traitement proposée par \eida propose ainsi une alternance d'étapes automatisées, en bleu sur le schéma, et d'étapes d'analyse par les chercheurs du projet, en violet (fig. \ref{fig:eida_workflow}).
     
     \begin{figure}[h]
     	\centering
