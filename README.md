@@ -25,7 +25,7 @@ Ce dépôt contient l'ensemble des documents liés au mémoire de stage rédigé
 * II.1.1. Réseaux de neurones et _computer vision_
 * II.1.2. Modèles de détection _off-the-shelf_ : outils libres pour l'extraction d’objets
 #### II.2. Construire une plateforme pour la détection : outils, interfaces et modèles de données
-* II.2.1. Penser une application pour la détection d'objets
+* II.2.1. Penser une application pour la détection d'objet
 * II.2.2. Annoter sur un GPU : extractorAPI
 #### II.3. Intégrer la vision artificielle aux pratiques des chercheurs
 * II.3.1. De la numérisation à l’annotation : l'automatisation du traitement des sources
@@ -35,13 +35,13 @@ Ce dépôt contient l'ensemble des documents liés au mémoire de stage rédigé
 #### III.1. Éditer des diagrammes : vectorisation et édition critique
 * III.1.1. Édition numérique des diagrammes astronomiques
 * III.1.2. De l’image aux vecteurs : la vision artificielle pour l’édition numérique
-#### III.2. Détection de similarité et _clustering_
-* III.2.1. Trouver des motifs dans les données : le _clustering_
-* III.2.2. _Similarity retrieval_ et étude de la circulation des idées
+#### III.2. Recherche de similarité et partitionnement de données
+* III.2.1. La recherche de similarité pour l'étude de la circulation des images
+* III.2.2. Le partitionnement de données : découvrir des motifs dans un corpus
 
 ## Livrables techniques
 ### extractorAPI
-Dans le cadre du stage, une API pour le lancement sur un GPU de l'inférence d'un modèle de détection d'objets a été développée. Le code est disponible dans le dépôt suivant : [extractorAPI](https://github.com/jnorindr/extractorAPI).
+Dans le cadre du stage, une API pour le lancement sur un GPU de l'inférence d'un modèle de détection d'objet a été développée. Le code est disponible dans le dépôt suivant : [extractorAPI](https://github.com/jnorindr/extractorAPI).
 
 En parallèle du développement de cette API, des modifications ont été apportés à l'application EIDA, dont le code n'est, à ce jour, pas public.
 
