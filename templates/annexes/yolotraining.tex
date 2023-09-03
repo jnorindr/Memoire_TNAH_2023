@@ -1,0 +1,46 @@
+\section{What is \yolov?}
+	\begin{itemize}
+		\item Built to detect objects in images
+		\item Trained with a dataset of real images (ImageNet)
+		\item Default model based on 80 object classes
+	\end{itemize}
+
+The goal of the training is to \textbf{adapt the model} to \textbf{our images and our classes}, for it to detect the objects we want it to.
+
+\section{Training dataset}
+	\begin{itemize}
+		\item \textbf{Annotate the objects} of interest on the images to \textbf{create labels} : the objects are defined by the \textbf{position and dimensions of the rectangular box} surrounding them;
+		\item The label file is a \texttt{.txt} file;
+		\item In the label file, each object corresponds to \textbf{one row}: \texttt{class x\_center y\_center width height}
+		\item Organize labels and images in directories: \textbf{one directory for images and one for labels}, each containing a \textbf{training, validation and testing dataset};
+		\item \textbf{Training is 80\% of the dataset}, validation is either 20\% or 10\% if a testing dataset (10\%) is needed;
+		\item The training and validation datasets must be \textbf{different data};
+		\item The image file and labels file must \textbf{have the same name}.
+	\end{itemize}
+
+\section{Config file}
+The \texttt{dataset.yaml} is the \textbf{configuration file for the training}. It contains:
+	\begin{itemize}
+		\item The \textbf{dataset directory path};
+		\item The relative paths to the training, validation and test directories;
+		\item A \textbf{class names dictionary}: in our case, the only class is \texttt{0: illustration}.
+	\end{itemize}
+
+
+\begin{verbatim}
+	path: ../dataset # dataset root dir
+	train: images/train  # training images (relative to 'path')
+	val: images/val  # validation images (relative to 'path')
+	test:  # test images (optional)
+	
+	# Classes names:
+	0: illustration
+\end{verbatim}
+
+\section{Notes}
+	\begin{itemize}
+		\item The training dataset is made of the \textbf{images the researchers annotate};
+		\item Our model needs to be able to detect \textbf{each illustration individually}rather than extracting illustrated pages as a unique illustration;
+		\item Our model needs to be able to differentiate tables from diagrams;
+		\item The model is trained on both images of \textbf{manuscripts and printed books}: does it impact the quality of the extraction?
+	\end{itemize}

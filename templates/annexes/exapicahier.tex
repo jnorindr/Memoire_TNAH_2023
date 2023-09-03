@@ -1,0 +1,62 @@
+\section{Fonctionnalités}
+L’\api permet de déplacer l’annotation des images envoyées par les utilisateur-rice-s de \eida sur le \gpu : dans une logique de développement modulaire, le modèle entraîné n’est pas intégré directement à l’application, mais dans une \api indépendante. Cette séparation du corps de l’application et du module générant les annotations permet d’éviter le ralentissement général de l’exécution de l’application sur le serveur Web : l’utilisation d’une \api permet de profiter de la capacité de calcul du \gpu lors de l’inférence, alors que l’application est développée sur un serveur différent. La communication en \ssh entre le \gpu et l’application \eida n’étant pas satisfaisante du point de vue de la sécurité, le développement d’une \api permet de gérer ces échanges par une voie sécurisée.
+
+Du point de vue de l’open source, cette forme de développement permet la création d’un outil plus flexible, qui pourra être réutilisé par d’autres projets en fonction de leurs besoins et de leur propre architecture.
+
+L’\api reçoit une requête \http de la part de l’application \eida lorsque l’utilisateur-rice envoie une nouvelle numérisation de son témoin dans la base de données via un formulaire. Le manifeste généré par l’application est envoyé à un \api endpoint qui l’enregistre et en extrait les images, qui sont ensuite traitées par le modèle. Les annotations générées sont retournées à l’application en réponse à la requête, et peuvent ainsi être visualisées par l’utilisateur-rice.
+
+L’objectif d’extractor\api – par rapport à notre \textit{workflow} actuel – est d’automatiser la détection des diagrammes par le modèle, pour que celle-ci puisse être faite à la demande de l’utilisateur-rice, sans intervention humaine, et que les annotations lui soient retournées automatiquement après envoi des numérisations.
+
+	\subsection{\textit{Workflow}}
+		\begin{enumerate}
+		\item Envoi d’une numérisation par l’utilisateur-rice sur l’application \eida ;
+		\item Création automatique d’un manifeste \iiif à partir des images ou du manifeste ;
+		\item Envoi du manifeste \iiif via requête \http POST à l’\api endpoint ;
+		\item Appel de la fonction Python : 
+		\item Vérification et enregistrement du manifeste ;
+		\item Enregistrement des images issues du manifeste pour leur traitement (\iiif downloader) ;
+		\item Traitement des images par le modèle : création des annotations (fichiers .txt) ;
+		\item \textit{Return} : envoi des annotations à l’application ;
+		\item Affichage des images annotées à l’utilisateur-rice.
+		\end{enumerate}
+	
+	L’architecture actuelle de l’application implique d’enregistrer deux fois les images : une première fois dans l’application \eida pour générer le manifeste \iiif,  puis une seconde fois sur le \gpu pour lancer l’inférence. On peut envisager le déplacement du serveur Cantaloupe sur le \gpu pour éviter la duplication de cette tâche.
+
+	\subsection{Outils}
+	L’\api est développée avec Flask, plus simple et flexible que Django pour la construction d’une \api légère, et le modèle est déployé à l’aide du module PyTorch.
+
+		\subsubsection{Modèle}
+		Le modèle utilisé a pour base docExtractor – appuyé sur le réseau de neurones U-Net –, un modèle entraîné sur des images synthétiques de manuscrits générées par l’algorithme SynDoc et sur ImageNet. Le script d’inférence utilisé est celui de YOLOv5.
+		Il est nécessaire de prendre en compte, dans le développement de l’\api, que d’autres modèles pour la détection d’objets seront testés, et que sera conservé le modèle produisant les meilleurs résultats. 
+		Le modèle final sera un modèle entraîné, idéalement commun avec \vhs. Il est cependant envisageable d’avoir un modèle par type de source (manuscrit ou imprimé), ce qui nécessiterait d'adapter la structure de l'\api pour pouvoir choisir le modèle utilisé en fonction de la requête.
+		
+		\subsubsection{\textit{Task queues}}
+		Pour éviter la surcharge de l’\api et gérer la réception de multiples requêtes, il est nécessaire de mettre en place un task manager comme Celery, qui traite en tâche de fond les requêtes reçues, et permet d’imposer qu’elles soient traitées successivement. 
+		
+	\subsection{Échange de données}
+		\subsubsection{Données envoyées}
+		Le manifeste \iiif généré par \eida. 
+		S’il est décidé après le réentraînement de conserver un modèle pour chaque type de témoin (manuscrit ou imprimé), il est nécessaire d’envoyer une donnée sur le type de support pour choisir le modèle correspondant.
+		\subsubsection{Données reçues}
+		Un fichier d’annotations au format \texttt{.txt} par manifeste. Celui-ci contient, pour chaque image :
+		\begin{itemize}
+			\item le numéro de l’image généré par une fonction \texttt{enumerate()},
+			\item le nom du fichier image annoté, 
+			\item les coordonnées de la détection au format \texttt{x y width height}.
+		\end{itemize}
+
+		Par exemple, pour deux objets détectés sur la 21e image du manuscrit 22 :
+		\begin{lstlisting}
+			21 ms22_0021.jpg
+			514 907 1700 1685
+			2424 831 1441 1423\end{lstlisting}
+
+	\subsection{Sécurité}
+	Pour assurer la sécurité de l’\api, une authentification avec un token a été envisagée. Pour plus de simplicité, l’\api utilise un décorateur pour \textbf{restreindre les hôtes autorisés} à envoyer des requêtes aux \textit{endpoints} : seuls l’hôte \texttt{obspm.fr} peut envoyer des requêtes pour l’inférence, évitant ainsi un risque de surcharge par des requêtes envoyées depuis un autre hôte.
+	
+	\subsection{Interactions}
+	L’annotation des images est automatique après envoi de la numérisation ; il est cependant nécessaire de prendre en compte le temps de réponse de la requête du point de vue de l’utilisateur-rice.
+	 
+	L’application \eida répond actuellement à cette problématique en affichant le message flash suivant : “Le processus de conversion de.s fichier.s PDF en images et/ou d'extraction des images à partir de manifeste.s externe.s est en cours. Veuillez patienter quelques instants pour corriger les annotations automatiques.”
+	
+	On peut envisager de désactiver les boutons de visualisation et d’édition du manifeste jusqu’à réception de la réponse à la requête.
