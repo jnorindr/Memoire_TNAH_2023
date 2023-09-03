@@ -24,13 +24,6 @@ Un manifeste est un fichier au format \json. Du point de vue de la donnée, la c
 
 Le \textit{Canvas} est un conteneur de niveau inférieur au \textit{Manifest}, qui permet de représenter une vue spécifique d'un objet, et les métadonnées qui y sont associées. Si nécessaire, un élément de niveau supérieur peut exister entre les \textit{Canvases} et le \textit{Manifest} : il s'agit des \textit{Ranges}, qui permettent de décrire une séquence de \textit{Canvases}.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=10cm]{images/modele_donnees_iiif.png}
-	\caption{Modèle de données \iiif pour la description d'un objet}
-	\label{fig:iiif_data_model}
-\end{figure}
-
 Il existe, à un niveau supérieur au \textit{Manifest}, une classe \textit{Collection}, qui assure une plus grande flexibilité du modèle pour les projets qui souhaiteraient réunir plusieurs objets dans une catégorie plus large. Une \textit{Collection} peut représenter une liste de \textit{Manifests}, ou une liste de \textit{Collections}, permettant ainsi de regrouper des objets ou groupes d'objets selon un cadre défini, qui facilite la navigation dans un ensemble restreint de ressources liées\footcite{PresentationAPI}.
 
 Pour un manifeste ne contenant que des images et leurs métadonnées, ces éléments suffisent à construire un fichier cohérent et fonctionnel, qui pourra être lu par un visualiseur \iiif.
@@ -38,6 +31,13 @@ Pour un manifeste ne contenant que des images et leurs métadonnées, ces élém
 Pour annoter les images d'un manifeste, il existe une série de types de ressource additionnels qui contiennent les annotations selon une hiérarchie précise, et les rattache à un \textit{Canvas} spécifique. L'\textit{Annotation Page} contient une liste ordonnée d'\textit{Annotations} pour un \textit{Canvas} : pour annoter un manifeste, il existe donc autant d'\textit{Annotation Pages} qu'il existe de \textit{Canvases} annotés.
 
 La classe \textit{Annotation} fait le lien entre le contenu de l'annotation (\textit{Content}) et le \textit{Canvas}\footcite{PresentationAPI} : ce type de ressource permet d'assurer l'interopérabilité du modèle, puisqu'elle permet l'alignement des annotations et des images, y compris dans le contexte d'annotations produites par un utilisateur différent du créateur du manifeste. Ainsi, ce modèle de données permet la collaboration entre plusieurs utilisateurs à partir d'un manifeste produit par une institutions, et rend possible la réutilisation des images comme des manifestes dans des projets ultérieurs, avec la fluidité d'un modèle partagé, standard, qui ne nécessite aucun effort d'alignement entre institutions.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{images/modele_donnees_iiif.png}
+	\caption{Modèle de données \iiif pour la description d'un objet}
+	\label{fig:iiif_data_model}
+\end{figure}
     
     \subsection{IIIF, un modèle universel ?}
         \subsubsection{Limites de l'interopérabilité du standard}
