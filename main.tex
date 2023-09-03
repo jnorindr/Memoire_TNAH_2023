@@ -93,7 +93,9 @@
 \newacronym{imagine}{IMAGINE}{Laboratoire d’Informatique Gaspard Monge}
 \newacronym{inha}{INHA}{Institut national d'histoire de l'art}
 \newacronym{iscd}{ISCD}{Institut des sciences du calcul et des données}
+\newacronym{jpeg}{JPEG}{Joint Photographic Experts Group}
 \newacronym{json}{JSON}{\emph{JavaScript Object Notation}}
+\newacronym{png}{PNG}{\emph{Portable Network Graphics}}
 \newacronym{ransac}{RANSAC}{\textit{RANdom SAmple Consensus}}
 \newacronym{rest}{REST}{\textit{Representational state transfer}}
 \newacronym{rmn}{Rmn-Grand Palais}{Réunion des musées nationaux-Grand Palais}
@@ -101,6 +103,7 @@
 \newacronym{svg}{SVG}{\emph{Scalable Vector Graphics}}
 \newacronym{syrte}{SYRTE}{Systèmes de Référence Temps-Espace}
 \newacronym{tei}{TEI}{\textit{Text Encoding Initiative}}
+\newacronym{tiff}{TIFF}{\textit{Tag Image File Format}} 
 \newacronym{uri}{URI}{\emph{Uniform Resource Identifier}}
 \newacronym{url}{URL}{\textit{Uniform Resource Locator}}
 \newacronym{vhs}{VHS}{Vision artificielle et analyse Historique de la circulation de l'illustration Scientifique}
@@ -149,7 +152,7 @@
 \newcommand{\xvi}{\textsc{xvi}\ieme{}\xspace}
 \newcommand{\xviii}{\textsc{xviii}\ieme{}\xspace}
 \newcommand{\jc}{av. J.-C.\xspace}
-\newcommand{\ma}{Moyen-Âge\xspace}
+\newcommand{\ma}{Moyen Âge\xspace}
 \def\cdt{\kern-0.5pt\ensuremath\cdot\kern-0.5pt}
 
 % Page à blanc sans en-tête et bas de page
@@ -177,9 +180,9 @@
     
     Mes remerciements vont, en premier lieu, à toutes les personnes qui m'ont accompagnée lors de cette année de Master.
     
-    Je tiens à adresser ma reconnaissance à mon directeur, Maxime Challon, pour son encadrement et pour ses conseils précieux tout au long de la rédaction de ce mémoire, qui ont permis son aboutissement. Je remercie chaleureusement Ségolène Albouy pour le rôle de tutrice qu'elle a joué lors de ce stage, pour sa bienveillance et son implication, qui m'ont permis de penser ce mémoire dans les meilleures conditions possible. Je remercie également Matthieu Husson pour la confiance qu'il m'a accordée, qui a rendu ce stage si enrichissant, et l'ensemble de l'équipe d'Histoire des sciences de l'Observatoire de Paris pour leur accueil.
+    Je tiens à adresser ma reconnaissance à mon directeur, Maxime Challon, pour son encadrement et pour ses conseils précieux tout au long de la rédaction de ce mémoire, qui ont permis son aboutissement. Je remercie chaleureusement Ségolène Albouy pour le rôle de tutrice qu'elle a joué lors de ce stage, pour sa bienveillance et son implication, qui m'ont permis de penser ce mémoire dans les meilleures conditions possibles. Je remercie également Matthieu Husson pour la confiance qu'il m'a accordée, qui a rendu ce stage si enrichissant, et l'ensemble de l'équipe d'Histoire des sciences de l'Observatoire de Paris pour leur accueil.
     
-    Merci ma famille et mes ami$\cdot$e$\cdot$s pour leur soutien lors de la rédaction de ce mémoire, à Ethan et Tara pour nos sessions de travail. Je remercie, enfin, Elsa et Arthur pour leurs relectures attentives.
+    Merci à ma famille et mes ami$\cdot$e$\cdot$s pour leur soutien lors de la rédaction de ce mémoire, à Ethan et Tara pour nos sessions de travail. Je remercie, enfin, Elsa et Arthur pour leurs relectures attentives.
 	
 	\chapterNo{Bibliographie}	
     \printbibliography[keyword={DH},title={Humanités numériques}]
@@ -202,39 +205,38 @@
         \chapter{Le projet EiDA}
         Cette partie a pour objectif de revenir sur le contexte institutionnel du projet \eida, projet de recherche mené à l'Observatoire de Paris par l'équipe d'histoire des science du laboratoire \acrshort{syrte}. Ce projet a pour sujet d'étude les diagrammes astronomiques de tradition ptoléméenne : cette partie vise ainsi à contextualiser d'un point de vue historique le corpus du projet, et à en expliciter les bornes chronologiques et géographiques.
         
-                \section{Contexte et objectifs du projet}
-                    \input{templates/partie1/chap1/section1}
-
-                \section{Sources primaires}
-                    \input{templates/partie1/chap1/section2}
-		\\
+	        \section{Contexte et objectifs du projet}
+	            \input{templates/partie1/chap1/section1}
+	
+	        \section{Sources primaires}
+	            \input{templates/partie1/chap1/section2}
+			\\
 		
-		\eida est un projet aux bornes chronologiques, géographiques et thématiques vastes, pour permettre une étude sur un temps long et dans un contexte global de la circulation des diagrammes astronomiques et des théories scientifiques qui les accompagnent. Dans cette démarche, proposer une étude quantitative, traitant un grand nombre de sources, permet de mettre en avant des motifs, connexions et évolutions en accord avec la diffusion afro-eurasienne des idées développées par Ptolémée. Les bornes définies dans cette partie permettent de délimiter un corpus d'images -- numérisations d'ouvrages manuscrits ou imprimés -- qui en tant d'objets numériques présentent également leurs propres problématiques, sur lesquelles revient la partie suivante.
+		\eida est un projet aux bornes chronologiques, géographiques et thématiques vastes, pour permettre une étude sur un temps long et dans un contexte global de la circulation des diagrammes astronomiques et des théories scientifiques qui les accompagnent. Dans cette démarche, proposer une étude quantitative, traitant un grand nombre de sources, permet de mettre en avant des motifs, connexions et évolutions en accord avec la diffusion afro-eurasienne des idées développées par Ptolémée. Les bornes définies dans cette partie permettent de délimiter un corpus d'images -- numérisations d'ouvrages manuscrits ou imprimés -- qui en tant d'objets numériques présentent également leurs propres problématiques.
         \clearemptydoublepage
         
         \chapter{Images et interopérabilité}
-        Les sources étudiées dans ce mémoire sont des sources iconographiques : cette partie vise à revenir sur les formats, ressources et méthodes pour le traitement des images en ligne, de la production de la ressource à sa publication. Les images digitales présentent des enjeux spécifiques, du point de vue de la technique, du droit et de la disponibilité. La mise en ligne et la diffusion d'une image fait suite à une longue chaîne de traitement qui a pour point de départ un objet matériel, et soulève des questionnements divers. Les spécifications \iiif tente de répondre à un certain nombre de problématiques liées à la présence en ligne de ressources iconographiques, et cette partie vise donc à présenter les solutions, possibilités et limites offertes par ce standard.
+        Les sources étudiées dans ce mémoire sont des sources iconographiques, qui nécessitent des formats, ressources et méthodes pour le traitement des images en ligne, de la production de la ressource à sa publication. Les images digitales présentent des enjeux spécifiques, du point de vue de la technique, du droit et de la disponibilité. La mise en ligne et la diffusion d'une image fait suite à une longue chaîne de traitement qui a pour point de départ un objet matériel, et soulève des questionnements divers liés aux droits d'auteur, aux métadonnées, à la publication. Les spécifications \iiif tentent de répondre à un certain nombre de problématiques liées à la présence en ligne de ressources iconographiques, notamment du point de vue de l'interopérabilité et de l'ouverture des données : cette partie vise donc à présenter les solutions, possibilités et limites offertes par ce standard.
         
-                \section{L’image comme source}
-                    \input{templates/partie1/chap2/section1}
-            
-                \section{\label{stardardIiif}Le standard IIIF}
-                    \input{templates/partie1/chap2/section2}
-        \\
+            \section{L’image comme source}
+                \input{templates/partie1/chap2/section1}
         
-        Les sources iconographiques sont soumises à un ensemble de restrictions, du point de vue du format, des métadonnées ou des droits, qui manquent encore d'une uniformité internationale et entre institutions qui rendrait fluide le partage de ces ressources sur Internet et entre les projets de recherche. Dans un projet impliquant l'utilisation d'algorithmes de vision artificielle, qui repose alors sur le traitement d'un volume important d'image, la mise en ligne de ces documents est un enjeux crucial, sur lequel repose d'une part la possibilité de constituer un corpus exploitable, ainsi que la publication des résultats du projet, qui peuvent également prendre la forme d'images numériques. Dans une optique de science ouverte, l'utilisation de standards et d'outils tels que ceux développés par le consortium \iiif permet d'assurer le partage d'images et de données respectant les mêmes formats, exploitables avec des outils libres, et d'avancer vers une abolition des silos de données, qui faciliterait notamment la construction de corpus massifs pour l'apprentissage machine. 
+            \section{\label{stardardIiif}Le standard IIIF}
+                \input{templates/partie1/chap2/section2}
+        	\\
+        
+        Les sources iconographiques sont soumises à un ensemble de restrictions, du point de vue du format, des métadonnées ou des droits, qui manquent encore d'une uniformité internationale et entre institutions qui rendrait fluide le partage de ces ressources sur Internet et entre les projets de recherche. Dans un projet impliquant l'utilisation d'algorithmes de vision artificielle, qui repose alors sur le traitement d'un volume important d'image, la mise en ligne de ces documents est un enjeu crucial, sur lequel repose d'une part la possibilité de constituer un corpus exploitable, ainsi que la publication des résultats du projet, qui peuvent également prendre la forme d'images numériques. Dans une optique de science ouverte, l'utilisation de standards et d'outils tels que ceux développés par le consortium \iiif permet d'assurer le partage d'images et de données respectant les mêmes formats, exploitables avec des outils libres, et d'avancer vers une abolition des silos de données, qui faciliterait notamment la construction de corpus massifs pour l'apprentissage machine. 
         \clearemptydoublepage
         
         \chapter[Corpus historiques et jeux de données]{Corpus historiques et jeux de données pour l’apprentissage machine}
+        La vision artificielle et l'apprentissage machine permettent le traitement de corpus d'images massifs par des méthodes quantitatives qui permettent aux historiens de traiter un volume de données bien plus important qu'une approche manuelle, ouvrant ainsi la voie à de nouvelles approches. Cette partie présente les bonnes pratiques à mettre en place afin d'assurer la pertinence de l'utilisation de ces outils, et d'en faire des traitements efficaces en accord avec les ambitions des projets.
+    
+            \section{Dimensions et cadre}
+                \input{templates/partie1/chap3/section1}
         
-        La vision artificielle et l'apprentissage machine permet le traitement de corpus d'images massifs par des méthodes quantitatives qui permettent aux historiens de traiter un volume de données bien plus important qu'une approche manuelle, ouvrant ainsi la voie à de nouvelles approches. Cette partie revient sur les bonnes pratiques à mettre en place afin d'assurer la pertinence de l'utilisation de ces outils, et d'en faire des traitements efficaces en accord avec les ambitions des projets.
-        
-                \section{Dimensions et cadre}
-                    \input{templates/partie1/chap3/section1}
-            
-                \section{\label{objectifsPossibilites}Objectifs scientifiques et possibilités numériques}
-                    \input{templates/partie1/chap3/section2}
-        \\
+            \section{\label{objectifsPossibilites}Objectifs scientifiques et possibilités numériques}
+                \input{templates/partie1/chap3/section2}
+        	\\
         
         Le \dl et la vision artificielle permettent aux projets de recherche en histoire et en histoire de l'art d'envisager de nouvelles approches des sources, à l'aide de traitement automatisés qui offrent de nouvelles méthodes de navigation de corpus d'images massifs : de la détection à l'édition, les outils produits redéfinissent les étapes de traitement des sources, et il est ainsi nécessaire d'intégrer aux pratiques des chercheurs des méthodes spécifiques à ce type d'approche, et notamment pour la création de jeu de données d'entraînement, à la base du développement de tout modèle de \ml. Cette intégration passe notamment par la rédaction de documentation, ainsi qu'un dialogue entre les équipes de recherche en vision artificielle et les équipes d'historiens. Ce dialogue permet d'établir les besoins de chacun, et de développer des outils techniques qui répondent aux besoins scientifiques de manière pertinente, en développant des modèles qui, malgré leurs limites, rejoignent aux mieux les attentes des sciences historiques.
         \clearemptydoublepage
@@ -242,43 +244,40 @@
 
     \part{De l’image à l’objet : intégrer l’apprentissage profond au traitement des sources historiques}
         \chapter[L'apprentissage profond]{Principes et utilisation de l’apprentissage profond}
-        
         L'apprentissage profond est un sous-domaine de l'apprentissage automatique basé sur l'apprentissage de couches successives de représentation. Le nombre de couches définit la profondeur du modèle : de nos jours, l'apprentissage profond compte plusieurs dizaines à plusieurs centaines de couches, qui apprennent toutes automatiquement à l'aide de données d'apprentissage\footcite{cholletApprentissageProfondAvec2020a}. Cette approche est au cœur des modèles de vision artificielle dont nous parlons dans ce mémoire, qui reposent sur des réseaux de neurones qui constituent ces couches superposées permettant un apprentissage des représentations à partir de données fournies.
         
-                \section{\label{neuralNets}Réseaux de neurones et \textit{computer vision}}
-                    \input{templates/partie2/chap4/section1}
-            
-                \section[Modèles de vision \textit{off-the-shelf}]{Modèles de détection \textit{off-the-shelf} : outils libres pour l'extraction d’objets}
-                    \input{templates/partie2/chap4/section2}
-        \\
+            \section{\label{neuralNets}Réseaux de neurones et \textit{computer vision}}
+                \input{templates/partie2/chap4/section1}
+        
+            \section[Modèles de vision \textit{off-the-shelf}]{Modèles de détection \textit{off-the-shelf} : outils libres pour l'extraction d’objets}
+                \input{templates/partie2/chap4/section2}
+        	\\
 		
 		Les modèles de vision \textit{off-the-shelf} ouvrent à des projets divers la possibilité d'intégrer la vision artificielle à leurs méthodologies, en réduisant le coût humain et temporel du développement d'un modèle de \textit{deep learning} par la mise à disposition en accès libre d'outils déjà performants, qu'il est possible d'entraîner pour les ajuster à des données spécifiques. Pour la détection d'objet, des jeux de données en accès libre tels qu'ImageNet permettent un pré-entraînement de ces modèles \textit{off-the-shelf}, qui apprennent alors des caractéristiques générales qui peuvent être précisées par un entraînement sur des sources plus spécifiques, en nécessitant un volume de données moins important qu'un modèle créé de zéro. Ces modèles de détection \textit{off-the-shelf} présentent ainsi une solution aux limites que peuvent présenter les sources historiques en termes de volume des données disponibles, et permettent également aux projets de se construire sur des bases solides, sans allouer de ressources à la création d'outils déjà existants, déjà performants, pour des tâches telles que la détection d'objet qui font partie des tâches canoniques de la vision par ordinateur.
         \clearemptydoublepage
         
         \chapter[Construire une plateforme pour la détection]{Construire une plateforme pour la détection : outils, interfaces et modèles de données}
-        
         L'intégration du \textit{deep learning} aux pratiques des chercheurs en sciences historiques passe par le développement d'une plateforme qui leur permet d'exploiter simplement ces outils pour traiter leurs sources. Cette plateforme à interface graphique doit être adaptée aux sources traitées, et pensée pour intégrer toutes les fonctionnalités souhaitées. En s'appuyant sur les développements réalisés par les projets \eida et \vhs, cette partie revient sur la construction d'une application  et d'une \api dédiées à la détection de diagrammes et images scientifiques dans les numérisations d'ouvrages manuscrits ou imprimés, avec une interface pour la correction de la détection : nous évoquons ainsi les méthodes de développement, les réflexions liées aux données, les besoins matériels liés à l'utilisation d'algorithmes de vision, et le développement d'une \api pour lancer l'inférence sur un \gpu. 
          
-                \section{\label{detectionApp}Penser une application pour la détection d'objet}
-                    \input{templates/partie2/chap5/section1}
-            
-                \section{Annoter sur un GPU : extractorAPI}
-                    \input{templates/partie2/chap5/section2}
-        \\
+            \section{\label{detectionApp}Penser une application pour la détection d'objet}
+                \input{templates/partie2/chap5/section1}
+        
+            \section{Annoter sur un GPU : extractorAPI}
+                \input{templates/partie2/chap5/section2}
+        	\\
         
         L'\textit{open source}\footnote{Le terme d'\textit{open source}, ou code source ouvert, désigne la pratique de mise à disposition du code source d'un logiciel sous licence libre, pour permettre gratuitement sa réutilisation, sa distribution et sa modification.} est une préoccupation centrale lors du développement d'outil pour les projets de recherche : il est en effet souhaitable de produire, dans la mesure du possible, des applications réutilisables par des projets futurs, pour assurer une continuité dans les travaux produits sans que se démultiplient les développements d'outils similaires. Ainsi, le remploi du code est au cœur des ambitions des équipes d'ingénierie : l'intégration de l'apprentissage profond à des projets d'histoire nécessite des outils spécifiques, construits autour de ces traitements des sources par l'\ia, qui restent néanmoins similaires -- ou comparables dans leurs besoins techniques -- d'un projet à l'autre. L'utilisation d'un \gpu pour la vision artificielle compte parmi les besoins matériels qui se traduisent entre les projets, ainsi, dans une optique de programmation modulaire, une \api externe à l'application \vhs/\eida a été développée pour répondre à ce besoin, sans être hautement spécifique aux besoins de ces projets comme pourrait l'être un module intégré à l'application. \exapi, l'\api développée dans ce cadre, est ainsi conçue, dès son cahier des charges, pour répondre aux besoins du projet \eida tout en restant réemployable dans d'autres contextes -- sont ainsi utilisés, pour sa construction, des outils libres qui en standardisent le développement, avec la vocation de produire une \api aussi flexible que robuste.
         \clearemptydoublepage
             
       	\chapter[\textit{Computer vision} et pratiques des chercheurs]{Intégrer la vision artificielle aux pratiques des chercheurs}
-      	
       	Le chapitre précédent établit, du point de vue du \textit{back end}, les besoins techniques pour l'intégration de la vision artificielle à une chaîne de traitement des sources historiques : ces préoccupations en termes d'architecture et de puissance de calcul sont celles des équipes d'ingénierie, et existent en parallèle des préoccupations qui concernent plus directement les utilisateurs, et impactent réellement les pratiques des chercheurs. Ce chapitre revient ainsi sur la chaîne de traitement des sources historiques dans sa totalité, depuis la numérisation fournie par l'utilisateur jusqu'aux résultats retournés pour le traitement par les chercheurs, et sur les échanges avec les utilisateurs, en termes d'interface mais également en termes de médiation.
                
-                \section[\textit{Workflow} de traitement des sources]{De la numérisation à l’annotation : l'automatisation du traitement des sources}
-                    \input{templates/partie2/chap6/section1}
-             
-                \section{Médiation et documentation}
-                    \input{templates/partie2/chap6/section2}
-        \\
+            \section[\textit{Workflow} de traitement des sources]{De la numérisation à l’annotation : l'automatisation du traitement des sources}
+                \input{templates/partie2/chap6/section1}
+         
+            \section{Médiation et documentation}
+                \input{templates/partie2/chap6/section2}
+        	\\
         
         L'intégration de la vision artificielle aux pratiques des chercheurs en humanités passe ainsi par l'établissement d'une chaîne de traitement qui trouve un équilibre entre besoins scientifiques et possibilités numériques, en mêlant étapes automatiques et correction manuelle pour s'assurer de la pertinence des données qui en découlent. L'automatisation n'est jamais totale : le traitement de sources historiques ne peut s'effectuer sans un regard critique, humain, qui contrebalance les limites de l'\ia qui ne permettent pas d'appréhender les objets étudiés sous tous les aspects nécessaires à prendre en compte dans le cadre d'une recherche historique. L'apprentissage profond et la vision artificielle s'insèrent donc dans les pratiques de chercheurs en histoire par le biais d'outils et d'interfaces qui appellent à leur contribution, à leurs corrections, et à leur regard sur les résultats produits par des algorithmes. Les ingénieurs ont pour rôle, dans ce contexte, de développer des outils et pratiques qui permettent ce lien entre les méthodes et techniques du \dl et les chercheurs en humanités, et d'établir une médiation fluide qui assure la pertinence du travail produit. Au-delà de la communication avec les chercheurs, utilisateurs des interfaces, il est du devoir des ingénieurs d'assurer la pérennité des outils créés par une documentation destinée à d'autres développeurs, pour permettre la maintenance du code, ou son réemploi dans des projets extérieurs : ces bonnes pratiques assurent ainsi la vie des développements produits, et leur bonne intégration dans un contexte de recherche plus large, en tant qu'outils libres pour le traitement des sources.
         \clearemptydoublepage
@@ -289,40 +288,39 @@
         
         La vision artificielle est riche en possibilités : au-delà des outils de détection plus accessibles -- dont des modèles \textit{off-the-shelf} existent pour les projets qui souhaiteraient l'employer -- les traitements automatiques pour l'édition ou pour l'étude critique des sources sont considérés et étudiés. La détection d'objet n'est ainsi pas considérée comme une finalité, mais comme une première étape dans une chaîne de traitement qui intègre des étapes automatique de recherche de similarité, de \textit{clustering} ou de vectorisation\footnote{Par vectorisation, nous entendons la transcription de numérisations de diagrammes géométriques en images \svg.}, offrant de nouvelles perspectives dans le cadre de l'intégration de la vision artificielle à l'étude des sources. Pour des projets portés sur l'illustration scientifique, tels que le projet \eida, la vectorisation présente un intérêt particulier, ouvrant des possibilités en termes d'édition automatique des diagrammes.
         
-                \section{Édition numérique des diagrammes astronomiques}
-                    \input{templates/partie3/chap7/section1}
-            
-                \section[De l’image aux vecteurs]{\label{vectorEdition}De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
-                    \input{templates/partie3/chap7/section2}
-        \\
+            \section{Édition numérique des diagrammes astronomiques}
+                \input{templates/partie3/chap7/section1}
         
-        La vectorisation automatique de diagrammes géométriques ouvre de nombreuses perspectives en termes de soutien à la recherche, et permet d'envisager des outils et interfaces à destination des chercheurs qui proposeraient d'automatiser des tâches autrement chronophage. La transcription des diagrammes, en lien avec l'histoire récente de l'édition critique de ce type d'illustration, fait l'objet d'un nombre restreint -- si ce n'est inexistant -- de normes qui en encadrent la pratique : les méthodes appliquées pour la transcription et l'édition numérique sont donc chronophages, variées, spécifiques aux projets qui les emploient, et les objets informatiques générés ne sont pas nécessairement manipulables ou interopérables. Le \svg, format libre, est particulièrement appropriés pour l'étude des diagrammes : la transformation d'une numérisation en objet vectoriel devient alors une étape clé de la chaîne de traitement. Manuellement, cette dernière est chronophage, et demande la connaissance d'outils spécifiques pour cette pratique. Ainsi, l'intégration à cette chaîne de traitement d'algorithmes de \cv est une opportunité de définition de normes et de pratiques pour la transcription, tout en rendant envisageable le traitement d'un volume important d'images en un temps moindre. La création d'outils libres, accessibles et aisés à prendre en main intégrant ces méthodes a vocation à faciliter cette étape chronophage du processus d'édition, et de permettre une analyse des diagrammes tirant réellement parti des avantages du numérique.    
+            \section[De l’image aux vecteurs]{\label{vectorEdition}De l’image aux vecteurs : la vision artificielle pour l’édition numérique}
+                \input{templates/partie3/chap7/section2}
+        	\\
+        
+        La vectorisation automatique de diagrammes géométriques ouvre de nombreuses perspectives en termes de soutien à la recherche, et permet d'envisager des outils et interfaces à destination des chercheurs qui proposeraient d'automatiser des tâches autrement chronophage. La transcription des diagrammes, en lien avec l'histoire récente de l'édition critique de ce type d'illustration, fait l'objet d'un nombre restreint -- si ce n'est inexistant -- de normes qui en encadrent la pratique : les méthodes appliquées pour la transcription et l'édition numérique sont donc variées, spécifiques aux projets qui les emploient, et les objets informatiques générés ne sont pas nécessairement manipulables ou interopérables. Le \svg, format libre, est particulièrement appropriés pour l'étude des diagrammes : la transformation d'une numérisation en objet vectoriel devient alors une étape clé de la chaîne de traitement. Manuellement, cette dernière demande la connaissance d'outils spécifiques pour cette pratique. Ainsi, l'intégration à cette chaîne de traitement d'algorithmes de \cv est une opportunité de définition de normes et de pratiques pour la transcription, tout en rendant envisageable le traitement d'un volume important d'images en un temps moindre. La création d'outils libres, accessibles et aisés à prendre en main intégrant ces méthodes a vocation à faciliter cette étape chronophage du processus d'édition, et de permettre une analyse des diagrammes tirant réellement parti des avantages du numérique.    
         \clearemptydoublepage
         
-        \chapter[\textit{Similarity retrieval} et \textit{clustering}]{Détection de similarité et partitionnement de données}
-        Le partitionnement de données (\textit{clustering}) et la détection de similarité (\textit{similarity retrieval})sont des tâches de vision artificielle dont l'application a déjà fait ses preuves. Particulièrement recherchées dans le domaine commercial, pour proposer notamment des recommandations aux utilisateurs en fonction de leurs intérêts\footcite{gronneIntroductionEmbeddingClustering2022}, elles permettent -- par des méthodes profondément différentes -- de regrouper des données en groupes cohérents. Pour le traitement d'images de sources historiques, le \textit{clustering} permet d'identifier des ensembles de sources présentant des aspects communs. La détection de similarité permet, à partir d'une illustration donnée, de trouver d'identifier des copies plus ou moins fidèles, ou le remploi de certains motifs. Ces deux méthodes s'appuient sur un fonctionnement similaire, qui transforme les images en valeurs numériques\footnote{On parle alors d'\textit{embedding}.} et en détermine les coordonnées dans un espace de grande dimension (\textit{high dimensional space})\footnote{Dont les caractéristiques sont définies en amont par extraction à l'aide d'un réseau de neurones artificiels. \cite{moiraghiExplorerCorpusImages2018}}, pour les y placer sous forme de point. Le \textit{clustering} identifie dans cet espace les points proches, et les réunis dans un nombre approprié de groupes\footcite{gronneIntroductionEmbeddingClustering2022}. La détection de similarité se base sur la transformation des images d'entrée en vecteurs placés dans un espace de grande dimension\footnote{ Il est également possible de considérer pour chaque image un unique point placé dans l'espace de grande dimension : la requête de détection de similarité retournera alors les points les plus proches, classés par proximité. \cite{dilenardoVisualPatternsDiscovery}} pour en calculer la similarité\footnote{Il existe plusieurs méthodes pour calculer la similarité de deux vecteurs, basées sur la distance euclidienne ou sur le cosinus de l'angle formé par ces vecteurs. \cite{gronneIntroductionEmbeddingClustering2022}}. Les perspectives ouvertes par ces algorithmes en termes d'outils pour la recherche sont nombreuses, et permettent d'envisager l'exploration de corpus volumineux par comparaison ou regroupement des sources, pour discerner dans les données des motifs et rapprochements autrement invisibles.
+        \chapter[\textit{Similarity retrieval} et \textit{clustering}]{Recherche de similarité et partitionnement de données}
+        Le partitionnement de données (\textit{clustering}) et la recherche de similarité (\textit{similarity retrieval}) sont des tâches de vision artificielle dont l'application a déjà fait ses preuves. Particulièrement recherchées dans le domaine commercial, pour proposer notamment des recommandations aux utilisateurs en fonction de leurs intérêts\footcite{gronneIntroductionEmbeddingClustering2022}, elles permettent -- par des méthodes profondément différentes -- de regrouper des données en groupes cohérents. Pour le traitement d'images de sources historiques, le \textit{clustering} permet d'identifier des ensembles de sources présentant des aspects communs. La recherche de similarité permet, à partir d'une illustration donnée, d'identifier des copies plus ou moins fidèles, ou le réemploi de certains motifs. Ces deux méthodes s'appuient sur un fonctionnement similaire, qui transforme les images en valeurs numériques\footnote{On parle alors d'\textit{embedding}.} et en détermine les coordonnées dans un espace de grande dimension (\textit{high dimensional space})\footnote{Dont les caractéristiques sont définies en amont par extraction à l'aide d'un réseau de neurones artificiels. \cite{moiraghiExplorerCorpusImages2018}}, pour les y placer sous forme de point. Le \textit{clustering} identifie dans cet espace les points proches, et les réunit dans un nombre approprié de groupes\footcite{gronneIntroductionEmbeddingClustering2022}. La recherche de similarité se base sur la transformation des images d'entrée en vecteurs placés dans un espace de grande dimension\footnote{ Il est également possible de considérer pour chaque image un unique point placé dans l'espace de grande dimension : la requête de recherche de similarité retournera alors les points les plus proches, classés par proximité. \cite{dilenardoVisualPatternsDiscovery}} pour en calculer la similarité\footnote{Il existe plusieurs méthodes pour calculer la similarité de deux vecteurs, basées sur la distance euclidienne ou sur le cosinus de l'angle formé par ces vecteurs. \cite{gronneIntroductionEmbeddingClustering2022}}. Les perspectives ouvertes par ces algorithmes en termes d'outils pour la recherche sont nombreuses, et permettent d'envisager l'exploration de corpus volumineux par comparaison ou regroupement des sources, pour discerner dans les données des motifs et rapprochements autrement invisibles.
         
-                \section[La recherche de similarité]{La recherche de similarité pour l'étude de la circulation des images}
-					\input{templates/partie3/chap8/section1}
+            \section[La recherche de similarité]{La recherche de similarité pour l'étude de la circulation des images}
+				\input{templates/partie3/chap8/section1}
 
-        		\section[Le partitionnement de données]{Le partitionnement de données : découvrir des motifs dans un corpus}
-        			\input{templates/partie3/chap8/section2}
-        \\
-        			
-       	Conclusion de la sous-partie concevoir un objet numérique qui réponde aux besoins éditoriaux des chercheurs
+       		\section[Le partitionnement de données]{Le partitionnement de données : découvrir des motifs dans un corpus}
+       			\input{templates/partie3/chap8/section2}
+        	\\
+        
+        L'emploi de méthodes de vision artificielle pour des tâches de partition des données et de recherche de similarité permet d'envisager une automatisation du traitement des documents historiques qui inclut des outils pour une première analyse des sources, en proposant un regard global sur les données, qui donne ensuite lieu à une étude critique par les chercheurs. Les récentes avances techniques dans ces champs spécifiques produisent ainsi des résultats prometteurs pour le traitement d'objets historiques, qui permettent de véritablement les considérer dans un contexte applicatif à destination des chercheurs en humanités. Si la communication sur les possibilités réelles de l'\ia est toujours nécessaire pour tempérer les attentes scientifiques autour des algorithmes, un \textit{workflow} équilibré entre exploitation des forces de la \cv et traitement manuel pour la correction, l'annotation et l'analyse des résultats permet de concevoir des outils ouvrant des perspectives diverses, nombreuses, en termes de manipulation et d'étude des sources. La mise à disposition de ces techniques pour un public d'historiens permet d'envisager une création aisée d'objets numériques répondant aux besoins éditoriaux des chercheurs, pour la publication des résultats des projets de recherche et pour la navigation des données sur des plateformes ouvertes, accessibles, navigables. 
         \clearemptydoublepage
     
     \chapterNo{Conclusion}
-    
-    \begin{quotation}
-    	The idea that machines can see or notice what human beings do not is a fallacy, because the machine is only doing what it is told – and it is the programmers who are setting parameters. But those parameters are based on a woefully old-fashioned and dull misunderstanding of what art historians do, and what they look for\footcite{pollockComputersCanFind2014}.
-    \end{quotation}
-    Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques
-    
-    basé sur l'établissement de normes peu flexibles : confronter ces normes établies à la diversité des sources
-    
-    
     \addcontentsline{toc}{chapter}{Conclusion}
+    \begin{displayquote}
+    	The idea that machines can see or notice what human beings do not is a fallacy, because the machine is only doing what it is told – and it is the programmers who are setting parameters. But those parameters are based on a woefully old-fashioned and dull misunderstanding of what art historians do, and what they look for\footcite{pollockComputersCanFind2014}.
+    \end{displayquote}
+
+Une chaîne de traitement automatique des sources incluant les techniques décrites dans ce mémoire, de la détection d'objet à la partition des données, permet d'envisager un traitement complet des sources historiques, depuis la numérisation d'un ouvrage jusqu'aux objets informatiques générés. Les techniques de vision artificielle mentionnées remplacent ainsi des tâches de collation et de transcription manuelles par des traitements automatiques, qui impliquent toujours des interventions des historiens pour conserver leur pertinence, 
+	Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques
+	
+	basé sur l'établissement de normes peu flexibles : confronter ces normes établies à la diversité des sources
     \clearemptydoublepage
     
 \appendix
