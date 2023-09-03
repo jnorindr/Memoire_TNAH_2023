@@ -77,6 +77,7 @@
 \newacronym{cnn}{CNN}{Convolutional Neural Nets}
 \newacronym{cpu}{CPU}{\textit{Central Processing Unit}}
 \newacronym{csv}{CSV}{\emph{Comma-separated values}}
+\newacronym{delius}{DELIUS}{\emph{DEep learning approach to cLustering vIsUal artS}}
 \newacronym{dips}{DIPS}{\emph{DISHAS Interactive Parameter Squeezer}}
 \newacronym{dishas}{DISHAS}{\emph{Digital Information System for the History of Astral Sciences}}
 \newacronym{dti}{DTI}{\emph{DISHAS Table Interface}}
@@ -179,7 +180,8 @@
     Je tiens à adresser ma reconnaissance à mon directeur, Maxime Challon, pour son encadrement et pour ses conseils précieux tout au long de la rédaction de ce mémoire, qui ont permis son aboutissement. Je remercie chaleureusement Ségolène Albouy pour le rôle de tutrice qu'elle a joué lors de ce stage, pour sa bienveillance et son implication, qui m'ont permis de penser ce mémoire dans les meilleures conditions possible. Je remercie également Matthieu Husson pour la confiance qu'il m'a accordée, qui a rendu ce stage si enrichissant, et l'ensemble de l'équipe d'Histoire des sciences de l'Observatoire de Paris pour leur accueil.
     
     Merci ma famille et mes ami$\cdot$e$\cdot$s pour leur soutien lors de la rédaction de ce mémoire, à Ethan et Tara pour nos sessions de travail. Je remercie, enfin, Elsa et Arthur pour leurs relectures attentives.
-
+	
+	\chapterNo{Bibliographie}	
     \printbibliography[keyword={DH},title={Humanités numériques}]
     \clearemptydoublepage
     \printbibliography[keyword={ml},title={\textit{Machine learning}, \textit{deep learning} et vision artificielle}]
@@ -243,21 +245,21 @@
         
         L'apprentissage profond est un sous-domaine de l'apprentissage automatique basé sur l'apprentissage de couches successives de représentation. Le nombre de couches définit la profondeur du modèle : de nos jours, l'apprentissage profond compte plusieurs dizaines à plusieurs centaines de couches, qui apprennent toutes automatiquement à l'aide de données d'apprentissage\footcite{cholletApprentissageProfondAvec2020a}. Cette approche est au cœur des modèles de vision artificielle dont nous parlons dans ce mémoire, qui reposent sur des réseaux de neurones qui constituent ces couches superposées permettant un apprentissage des représentations à partir de données fournies.
         
-                \section{Réseaux de neurones et \textit{computer vision}}
+                \section{\label{neuralNets}Réseaux de neurones et \textit{computer vision}}
                     \input{templates/partie2/chap4/section1}
             
                 \section[Modèles de vision \textit{off-the-shelf}]{Modèles de détection \textit{off-the-shelf} : outils libres pour l'extraction d’objets}
                     \input{templates/partie2/chap4/section2}
         \\
 		
-		Les modèles de vision \textit{off-the-shelf} ouvrent à des projets divers la possibilité d'intégrer la vision artificielle à leurs méthodologies, en réduisant le coût humain et temporel du développement d'un modèle de \textit{deep learning} par la mise à disposition en accès libre d'outils déjà performants, qu'il est possible d'entraîner pour les ajuster à des données spécifiques. Pour la détection d'objets, des jeux de données en accès libre tels qu'ImageNet permettent un pré-entraînement de ces modèles \textit{off-the-shelf}, qui apprennent alors des caractéristiques générales qui peuvent être précisées par un entraînement sur des sources plus spécifiques, en nécessitant un volume de données moins important qu'un modèle créé de zéro. Ces modèles de détection \textit{off-the-shelf} présentent ainsi une solution aux limites que peuvent présenter les sources historiques en termes de volume des données disponibles, et permettent également aux projets de se construire sur des bases solides, sans allouer de ressources à la création d'outils déjà existants, déjà performants, pour des tâches telles que la détection d'objet qui font partie des tâches canoniques de la vision par ordinateur.
+		Les modèles de vision \textit{off-the-shelf} ouvrent à des projets divers la possibilité d'intégrer la vision artificielle à leurs méthodologies, en réduisant le coût humain et temporel du développement d'un modèle de \textit{deep learning} par la mise à disposition en accès libre d'outils déjà performants, qu'il est possible d'entraîner pour les ajuster à des données spécifiques. Pour la détection d'objet, des jeux de données en accès libre tels qu'ImageNet permettent un pré-entraînement de ces modèles \textit{off-the-shelf}, qui apprennent alors des caractéristiques générales qui peuvent être précisées par un entraînement sur des sources plus spécifiques, en nécessitant un volume de données moins important qu'un modèle créé de zéro. Ces modèles de détection \textit{off-the-shelf} présentent ainsi une solution aux limites que peuvent présenter les sources historiques en termes de volume des données disponibles, et permettent également aux projets de se construire sur des bases solides, sans allouer de ressources à la création d'outils déjà existants, déjà performants, pour des tâches telles que la détection d'objet qui font partie des tâches canoniques de la vision par ordinateur.
         \clearemptydoublepage
         
         \chapter[Construire une plateforme pour la détection]{Construire une plateforme pour la détection : outils, interfaces et modèles de données}
         
         L'intégration du \textit{deep learning} aux pratiques des chercheurs en sciences historiques passe par le développement d'une plateforme qui leur permet d'exploiter simplement ces outils pour traiter leurs sources. Cette plateforme à interface graphique doit être adaptée aux sources traitées, et pensée pour intégrer toutes les fonctionnalités souhaitées. En s'appuyant sur les développements réalisés par les projets \eida et \vhs, cette partie revient sur la construction d'une application  et d'une \api dédiées à la détection de diagrammes et images scientifiques dans les numérisations d'ouvrages manuscrits ou imprimés, avec une interface pour la correction de la détection : nous évoquons ainsi les méthodes de développement, les réflexions liées aux données, les besoins matériels liés à l'utilisation d'algorithmes de vision, et le développement d'une \api pour lancer l'inférence sur un \gpu. 
          
-                \section{Penser une application pour la détection d'objets}
+                \section{\label{detectionApp}Penser une application pour la détection d'objet}
                     \input{templates/partie2/chap5/section1}
             
                 \section{Annoter sur un GPU : extractorAPI}
@@ -283,9 +285,9 @@
 
     \part{Perspectives pour le traitement des sources : vers un outil pour l’édition et la recherche}
         \chapter[Éditer des diagrammes]{Éditer des diagrammes : vectorisation et édition critique}
-        La partie précédente s'attache à décrire l'intégration des techniques et méthodes de la vision artificielle aux pratiques des chercheurs, en s'appuyant notamment sur le développement d'outils pour l'utilisation d'algorithmes de détection d'objets. Tâche canonique de la vision artificielle, la détection d'objets dans les images est une pratique établie, dont l'intérêt pour la navigation des corpus est avéré par un nombre certain de projets récents, tels que CorDeep\footcite{CorDeep}, ayant produit et publié des applications intégrant des algorithmes de détection d'objets pour le traitement des sources.
+        La partie précédente s'attache à décrire l'intégration des techniques et méthodes de la vision artificielle aux pratiques des chercheurs, en s'appuyant notamment sur le développement d'outils pour l'utilisation d'algorithmes de détection d'objet. Tâche canonique de la vision artificielle, la détection d'objet dans les images est une pratique établie, dont l'intérêt pour la navigation des corpus est avéré par un nombre certain de projets récents, tels que CorDeep\footcite{CorDeep}, ayant produit et publié des applications intégrant des algorithmes de détection d'objet pour le traitement des sources.
         
-        La vision artificielle est riche en possibilités : au-delà des outils de détection plus accessibles -- dont des modèles \textit{off-the-shelf} existent pour les projets qui souhaiteraient l'employer -- les traitements automatiques pour l'édition ou pour l'étude critique des sources sont considérés et étudiés. La détection d'objet n'est ainsi pas considérée comme une finalité, mais comme une première étape dans une chaîne de traitement qui intègre des étapes automatique de détection de similarités, de \textit{clustering} ou de vectorisation\footnote{Par vectorisation, nous entendons la transcription de numérisations de diagrammes géométriques en images \svg.}, offrant de nouvelles perspectives dans le cadre de l'intégration de la vision artificielle à l'étude des sources. Pour des projets portés sur l'illustration scientifique, tels que le projet \eida, la vectorisation présente un intérêt particulier, ouvrant des possibilités en termes d'édition automatique des diagrammes.
+        La vision artificielle est riche en possibilités : au-delà des outils de détection plus accessibles -- dont des modèles \textit{off-the-shelf} existent pour les projets qui souhaiteraient l'employer -- les traitements automatiques pour l'édition ou pour l'étude critique des sources sont considérés et étudiés. La détection d'objet n'est ainsi pas considérée comme une finalité, mais comme une première étape dans une chaîne de traitement qui intègre des étapes automatique de recherche de similarité, de \textit{clustering} ou de vectorisation\footnote{Par vectorisation, nous entendons la transcription de numérisations de diagrammes géométriques en images \svg.}, offrant de nouvelles perspectives dans le cadre de l'intégration de la vision artificielle à l'étude des sources. Pour des projets portés sur l'illustration scientifique, tels que le projet \eida, la vectorisation présente un intérêt particulier, ouvrant des possibilités en termes d'édition automatique des diagrammes.
         
                 \section{Édition numérique des diagrammes astronomiques}
                     \input{templates/partie3/chap7/section1}
@@ -294,20 +296,32 @@
                     \input{templates/partie3/chap7/section2}
         \\
         
-        La vectorisation automatique de diagrammes géométriques ouvre de nombreuses perspectives en termes de soutien à la recherche, et permet d'envisager des outils et interfaces à destination des chercheurs qui proposeraient d'automatiser des tâches autrement chronophage. La transcription des diagrammes, en lien avec l'histoire récente de l'édition critique de ce type d'illustration, fait l'objet d'un nombre restreint -- si ce n'est inexistant -- de normes qui en encadrent la pratique : les méthodes appliquées pour la transcription et l'édition numérique sont donc chronophages, variées, spécifiques aux projets qui les emploient, et les objets informatiques générés ne sont pas nécessairement manipulables ou interopérables. Le \svg, format libre, est particulièrement appropriés pour l'étude des diagrammes : la transformation d'une numérisation en objet vectoriel devient alors une étape clé de la chaîne de traitement. Manuellement, cette dernière est chronophage, et demande la connaissance d'outils spécifiques pour cette pratique. Ainsi, l'intégration à cette chaîne de traitement d'algorithmes de \cv permet de l'envisager comme une pratique systématique, rendant possible la transcription d'un volume important d'images en un temps moindre. La création d'outils libres, accessibles et aisés à prendre en main intégrant ces méthodes a vocation à faciliter cette étape chronophage du processus d'édition, et de permettre une analyse des diagrammes tirant réellement parti des avantages du numérique.    
+        La vectorisation automatique de diagrammes géométriques ouvre de nombreuses perspectives en termes de soutien à la recherche, et permet d'envisager des outils et interfaces à destination des chercheurs qui proposeraient d'automatiser des tâches autrement chronophage. La transcription des diagrammes, en lien avec l'histoire récente de l'édition critique de ce type d'illustration, fait l'objet d'un nombre restreint -- si ce n'est inexistant -- de normes qui en encadrent la pratique : les méthodes appliquées pour la transcription et l'édition numérique sont donc chronophages, variées, spécifiques aux projets qui les emploient, et les objets informatiques générés ne sont pas nécessairement manipulables ou interopérables. Le \svg, format libre, est particulièrement appropriés pour l'étude des diagrammes : la transformation d'une numérisation en objet vectoriel devient alors une étape clé de la chaîne de traitement. Manuellement, cette dernière est chronophage, et demande la connaissance d'outils spécifiques pour cette pratique. Ainsi, l'intégration à cette chaîne de traitement d'algorithmes de \cv est une opportunité de définition de normes et de pratiques pour la transcription, tout en rendant envisageable le traitement d'un volume important d'images en un temps moindre. La création d'outils libres, accessibles et aisés à prendre en main intégrant ces méthodes a vocation à faciliter cette étape chronophage du processus d'édition, et de permettre une analyse des diagrammes tirant réellement parti des avantages du numérique.    
         \clearemptydoublepage
         
-        \chapter{Détection de similarité et \textit{clustering}}
-	             \section{Trouver des motifs dans les données : le \textit{clustering}}
-        			\input{templates/partie3/chap8/section1}
+        \chapter[\textit{Similarity retrieval} et \textit{clustering}]{Détection de similarité et partitionnement de données}
+        Le partitionnement de données (\textit{clustering}) et la détection de similarité (\textit{similarity retrieval})sont des tâches de vision artificielle dont l'application a déjà fait ses preuves. Particulièrement recherchées dans le domaine commercial, pour proposer notamment des recommandations aux utilisateurs en fonction de leurs intérêts\footcite{gronneIntroductionEmbeddingClustering2022}, elles permettent -- par des méthodes profondément différentes -- de regrouper des données en groupes cohérents. Pour le traitement d'images de sources historiques, le \textit{clustering} permet d'identifier des ensembles de sources présentant des aspects communs. La détection de similarité permet, à partir d'une illustration donnée, de trouver d'identifier des copies plus ou moins fidèles, ou le remploi de certains motifs. Ces deux méthodes s'appuient sur un fonctionnement similaire, qui transforme les images en valeurs numériques\footnote{On parle alors d'\textit{embedding}.} et en détermine les coordonnées dans un espace de grande dimension (\textit{high dimensional space})\footnote{Dont les caractéristiques sont définies en amont par extraction à l'aide d'un réseau de neurones artificiels. \cite{moiraghiExplorerCorpusImages2018}}, pour les y placer sous forme de point. Le \textit{clustering} identifie dans cet espace les points proches, et les réunis dans un nombre approprié de groupes\footcite{gronneIntroductionEmbeddingClustering2022}. La détection de similarité se base sur la transformation des images d'entrée en vecteurs placés dans un espace de grande dimension\footnote{ Il est également possible de considérer pour chaque image un unique point placé dans l'espace de grande dimension : la requête de détection de similarité retournera alors les points les plus proches, classés par proximité. \cite{dilenardoVisualPatternsDiscovery}} pour en calculer la similarité\footnote{Il existe plusieurs méthodes pour calculer la similarité de deux vecteurs, basées sur la distance euclidienne ou sur le cosinus de l'angle formé par ces vecteurs. \cite{gronneIntroductionEmbeddingClustering2022}}. Les perspectives ouvertes par ces algorithmes en termes d'outils pour la recherche sont nombreuses, et permettent d'envisager l'exploration de corpus volumineux par comparaison ou regroupement des sources, pour discerner dans les données des motifs et rapprochements autrement invisibles.
+        
+                \section[La recherche de similarité]{La recherche de similarité pour l'étude de la circulation des images}
+					\input{templates/partie3/chap8/section1}
+
+        		\section[Le partitionnement de données]{Le partitionnement de données : découvrir des motifs dans un corpus}
+        			\input{templates/partie3/chap8/section2}
+        \\
         			
-                \section{\textit{Similarity retrieval} et étude de la circulation des idées}
-                    \input{templates/partie3/chap8/section2}
-            
+       	Conclusion de la sous-partie concevoir un objet numérique qui réponde aux besoins éditoriaux des chercheurs
         \clearemptydoublepage
     
     \chapterNo{Conclusion}
+    
+    \begin{quotation}
+    	The idea that machines can see or notice what human beings do not is a fallacy, because the machine is only doing what it is told – and it is the programmers who are setting parameters. But those parameters are based on a woefully old-fashioned and dull misunderstanding of what art historians do, and what they look for\footcite{pollockComputersCanFind2014}.
+    \end{quotation}
     Étudier et exploiter les résultats automatiques : limites et perspectives pour les sciences historiques
+    
+    basé sur l'établissement de normes peu flexibles : confronter ces normes établies à la diversité des sources
+    
+    
     \addcontentsline{toc}{chapter}{Conclusion}
     \clearemptydoublepage
     

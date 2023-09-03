@@ -50,6 +50,13 @@
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/TCB9CHD3/create-a-machine-learning-api-with-django-rest-framework-967571640c46.html}
 }
 
+@misc{ArtGANWikiArt,
+  title = {{{ArtGAN}} + {{WikiArt}}},
+  url = {https://github.com/cs-chan/ArtGAN},
+  urldate = {2023-09-02},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/KJECJDU6/ArtGAN.html}
+}
+
 @book{azencottIntroductionAuMachine2018,
   title = {{Introduction au Machine Learning}},
   author = {Azencott, Chlo{\'e}-Agathe},
@@ -139,6 +146,24 @@
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/VN2ENVVH/digital-art-history.html}
 }
 
+@article{bounouWebApplicationWatermark2020,
+  title = {A {{Web Application}} for {{Watermark Recognition}}},
+  author = {Bounou, Oumayma and Monnier, Tom and Pastrolin, Ilaria and Shen, Xi and {Limon-Bonnet}, Marie-Fran{\c c}oise and Bougard, Fran{\c c}ois and Aubry, Mathieu and Smith, Marc H. and Poncet, Olivier and Raverdy, Pierre-Guillaume and B{\'e}n{\'e}vent, Christine},
+  year = {2020},
+  month = jul,
+  journal = {Journal of Data Mining and Digital Humanities},
+  volume = {Atelier Digit\_Hum},
+  number = {45},
+  pages = {33},
+  publisher = {{Episciences.org}},
+  doi = {10.46298/jdmdh.6220},
+  url = {https://inria.hal.science/hal-02513038},
+  urldate = {2023-09-02},
+  abstract = {The study of watermarks is a key step for archivists and historians as it enables them to reveal the origin of paper. Although highly practical, automatic watermark recognition comes with many difficulties and is still considered an unsolved challenge. Nonetheless, Shen et al. [2019] recently introduced a new approach for this specific task which showed promising results. Building upon this approach, this work proposes a new public web application dedicated to automatic watermark recognition entitled Filigranes pour tous. The application not only hosts a detailed catalog of more than 17k watermarks manually collected from the French National Archives (Minutier central) or extracted from existing online resources (Briquet database), but it also enables non-specialists to identify a watermark from a simple photograph in a few seconds. Moreover, additional watermarks can easily be added by the users making the enrichment of the existing catalog possible through crowdsourcing. Our Web application is available at http://filigranes.inria.fr/.},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/UN2PQ8BJ/Bounou et al. - 2020 - A Web Application for Watermark Recognition.pdf}
+}
+
 @article{brachmannComputationalExperimentalApproaches2017,
   title = {Computational and {{Experimental Approaches}} to {{Visual Aesthetics}}},
   author = {Brachmann, Anselm and Redies, Christoph},
@@ -220,6 +245,26 @@
   keywords = {ml}
 }
 
+@incollection{caronDeepClusteringUnsupervised2018,
+  title = {Deep {{Clustering}} for {{Unsupervised Learning}} of {{Visual Features}}},
+  booktitle = {Computer {{Vision}} \textendash{} {{ECCV}} 2018},
+  author = {Caron, Mathilde and Bojanowski, Piotr and Joulin, Armand and Douze, Matthijs},
+  editor = {Ferrari, Vittorio and Hebert, Martial and Sminchisescu, Cristian and Weiss, Yair},
+  year = {2018},
+  volume = {11218},
+  pages = {139--156},
+  publisher = {{Springer International Publishing}},
+  address = {{Cham}},
+  doi = {10.1007/978-3-030-01264-9_9},
+  url = {https://link.springer.com/10.1007/978-3-030-01264-9_9},
+  urldate = {2023-09-02},
+  abstract = {Clustering is a class of unsupervised learning methods that has been extensively applied and studied in computer vision. Little work has been done to adapt it to the end-to-end training of visual features on large-scale datasets. In this work, we present DeepCluster, a clustering method that jointly learns the parameters of a neural network and the cluster assignments of the resulting features. DeepCluster iteratively groups the features with a standard clustering algorithm, kmeans, and uses the subsequent assignments as supervision to update the weights of the network. We apply DeepCluster to the unsupervised training of convolutional neural networks on large datasets like ImageNet and YFCC100M. The resulting model outperforms the current state of the art by a significant margin on all the standard benchmarks.},
+  isbn = {978-3-030-01263-2 978-3-030-01264-9},
+  langid = {english},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/5YTEDUR8/Caron et al. - 2018 - Deep Clustering for Unsupervised Learning of Visua.pdf}
+}
+
 @misc{carremansHandlingOverfittingDeep2019,
   title = {Handling Overfitting in Deep Learning Models},
   author = {Carremans, Bert},
@@ -232,6 +277,25 @@
   langid = {english},
   keywords = {ml},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/69537YEB/handling-overfitting-in-deep-learning-models-c760ee047c6e.html}
+}
+
+@article{castellanoDeepLearningApproach2022,
+  title = {A {{Deep Learning Approach}} to {{Clustering Visual Arts}}},
+  author = {Castellano, Giovanna and Vessio, Gennaro},
+  year = {2022},
+  month = nov,
+  journal = {International Journal of Computer Vision},
+  volume = {130},
+  number = {11},
+  pages = {2590--2605},
+  issn = {1573-1405},
+  doi = {10.1007/s11263-022-01664-y},
+  url = {https://doi.org/10.1007/s11263-022-01664-y},
+  urldate = {2023-09-02},
+  abstract = {Clustering artworks is difficult for several reasons. On the one hand, recognizing meaningful patterns based on domain knowledge and visual perception is extremely hard. On the other hand, applying traditional clustering and feature reduction techniques to the highly dimensional pixel space can be ineffective. To address these issues, in this paper we propose DELIUS: a DEep learning approach to cLustering vIsUal artS. The method uses a pre-trained convolutional network to extract features and then feeds these features into a deep embedded clustering model, where the task of mapping the input data to a latent space is jointly optimized with the task of finding a set of cluster centroids in this latent space. Quantitative and qualitative experimental results show the effectiveness of the proposed method. DELIUS can be useful for several tasks related to art analysis, in particular visual link retrieval and historical knowledge discovery in painting datasets.},
+  langid = {english},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/RT9MAEXJ/Castellano et Vessio - 2022 - A Deep Learning Approach to Clustering Visual Arts.pdf}
 }
 
 @misc{CategoryGoogleArt,
@@ -302,6 +366,16 @@
   abstract = {Layout Analysis (the identification of zones and their classification) is the first step along line segmentation in Optical Character Recognition and similar tasks. The ability of identifying main body of text from marginal text or running titles makes the difference between extracting the work full text of a digitized book and noisy outputs. We show that most segmenters focus on pixel classification and that polygonization of this output has not been used as a target for the latest competition on historical document (ICDAR 2017 and onwards), despite being the focus in the early 2010s. We propose to shift, for efficiency, the task from a pixel classification-based polygonization to an object detection using isothetic rectangles. We compare the output of Kraken and YOLOv5 in terms of segmentation and show that the later severely outperforms the first on small datasets (1110 samples and below). We release two datasets for training and evaluation on historical documents as well as a new package, YALTAi, which injects YOLOv5 in the segmentation pipeline of Kraken 4.1.},
   keywords = {ml},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/ZZHHWQ4D/Clérice - 2023 - You Actually Look Twice At it (YALTAi) using an o.pdf}
+}
+
+@misc{Clustering,
+  title = {Clustering},
+  journal = {scikit-learn},
+  url = {https://scikit-learn/stable/modules/clustering.html},
+  urldate = {2023-09-03},
+  abstract = {Clustering of unlabeled data can be performed with the module sklearn.cluster. Each clustering algorithm comes in two variants: a class, that implements the fit method to learn the clusters on trai...},
+  langid = {english},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/G8CXG7D4/clustering.html}
 }
 
 @misc{COCOCommonObjects,
@@ -383,6 +457,21 @@
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/DX33BYDG/darknet.html}
 }
 
+@misc{deluaSupervisedVsUnsupervised2021,
+  title = {Supervised vs. {{Unsupervised Learning}}: {{What}}'s the {{Difference}}?},
+  shorttitle = {Supervised vs. {{Unsupervised Learning}}},
+  author = {Delua, Julianna},
+  year = {2021},
+  month = mar,
+  journal = {IBM Blog},
+  url = {https://www.ibm.com/blog/supervised-vs-unsupervised-learning/},
+  urldate = {2023-09-02},
+  abstract = {In this article, we'll explore the basics of two data science approaches: supervised and unsupervised. Find out which approach is right for your situation. The world is getting ``smarter'' every day, and to keep up with consumer expectations, companies are increasingly using machine learning algorithms to make things easier. You can see them in use [\ldots ]},
+  langid = {american},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/BGXPMC72/supervised-vs-unsupervised-learning.html}
+}
+
 @misc{denoyelleProposCoutImages2021,
   type = {{Billet}},
   title = {{A propos du co\^ut des images d'\oe uvres patrimoniales}},
@@ -451,6 +540,16 @@
   urldate = {2023-08-07},
   keywords = {technique},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/DNQAAKS8/DigitalImages.html}
+}
+
+@inproceedings{dilenardoVisualPatternsDiscovery,
+  title = {Visual {{Patterns Discovery}} in {{Large Databases}} of {{Paintings}}},
+  booktitle = {Digital {{Humanities}} 2016: {{Conference Abstracts}}},
+  author = {{di Lenardo}, Isabella and Seguin, Benoit and Kaplan, Fr{\'e}d{\'e}ric},
+  pages = {169--172},
+  publisher = {{Jagiellonian University \& Pedagogical University}},
+  address = {{Krak\'ow}},
+  keywords = {ml}
 }
 
 @misc{Django,
@@ -601,6 +700,19 @@
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/98JET9D2/S0957417417308126.html}
 }
 
+@misc{farleyImageRetrievalConcepts2023,
+  title = {Image {{Retrieval}} Concepts},
+  author = {Farley, Patrick},
+  year = {2023},
+  month = aug,
+  url = {https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-image-retrieval},
+  urldate = {2023-09-02},
+  abstract = {Concepts related to image vectorization using the Image Analysis 4.0 API.},
+  langid = {american},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/XITDY74T/concept-image-retrieval.html}
+}
+
 @misc{FastAPI,
   title = {{{FastAPI}}},
   url = {https://fastapi.tiangolo.com/},
@@ -619,6 +731,24 @@
   langid = {french},
   keywords = {technique},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/VDRFX8XX/fastapi-le-framework-python-alternatif-a-django-et-flask.html}
+}
+
+@article{fiorucciMachineLearningCultural2020,
+  title = {Machine {{Learning}} for {{Cultural Heritage}}: {{A Survey}}},
+  shorttitle = {Machine {{Learning}} for {{Cultural Heritage}}},
+  author = {Fiorucci, Marco and Khoroshiltseva, Marina and Pontil, Massimiliano and Traviglia, Arianna and Del Bue, Alessio and James, Stuart},
+  year = {2020},
+  month = may,
+  journal = {Pattern Recognition Letters},
+  volume = {133},
+  pages = {102--108},
+  issn = {0167-8655},
+  doi = {10.1016/j.patrec.2020.02.017},
+  url = {https://www.sciencedirect.com/science/article/pii/S0167865520300532},
+  urldate = {2023-09-03},
+  abstract = {The application of Machine Learning (ML) to Cultural Heritage (CH) has evolved since basic statistical approaches such as Linear Regression to complex Deep Learning models. The question remains how much of this actively improves on the underlying algorithm versus using it within a `black box' setting. We survey across ML and CH literature to identify the theoretical changes which contribute to the algorithm and in turn them suitable for CH applications. Alternatively, and most commonly, when there are no changes, we review the CH applications, features and pre/post-processing which make the algorithm suitable for its use. We analyse the dominant divides within ML, Supervised, Semi-supervised and Unsupervised, and reflect on a variety of algorithms that have been extensively used. From such an analysis, we give a critical look at the use of ML in CH and consider why CH has only limited adoption of ML.},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/963GTB4T/Fiorucci et al. - 2020 - Machine Learning for Cultural Heritage A Survey.pdf;/home/jade/snap/zotero-snap/common/Zotero/storage/9QGAQWJ6/S0167865520300532.html}
 }
 
 @misc{FlaskDocumentation,
@@ -696,6 +826,20 @@
   langid = {english},
   keywords = {technique},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/4CSIVACK/restful-authentication-with-flask.html}
+}
+
+@misc{gronneIntroductionEmbeddingClustering2022,
+  title = {Introduction to {{Embedding}}, {{Clustering}}, and {{Similarity}}},
+  author = {Gr{\o}nne, Mathias},
+  year = {2022},
+  month = oct,
+  journal = {Medium},
+  url = {https://towardsdatascience.com/introduction-to-embedding-clustering-and-similarity-11dd80b00061},
+  urldate = {2023-09-02},
+  abstract = {Introduction to key elements of ML and Autoencoders: Embedding, Clustering, and Similarity.},
+  langid = {english},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/UN5EGA8T/introduction-to-embedding-clustering-and-similarity-11dd80b00061.html}
 }
 
 @misc{GuidePratiquePour,
@@ -896,6 +1040,25 @@
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/KWGSG2L9/revue-romantisme-2014-1-page-63.html}
 }
 
+@misc{kaouaImageCollationMatching2021,
+  title = {Image {{Collation}}: {{Matching}} Illustrations in Manuscripts},
+  shorttitle = {Image {{Collation}}},
+  author = {Kaoua, Ryad and Shen, Xi and Durr, Alexandra and Lazaris, Stavros and Picard, David and Aubry, Mathieu},
+  year = {2021},
+  month = aug,
+  number = {arXiv:2108.08109},
+  eprint = {2108.08109},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.2108.08109},
+  url = {http://arxiv.org/abs/2108.08109},
+  urldate = {2023-09-02},
+  abstract = {Illustrations are an essential transmission instrument. For an historian, the first step in studying their evolution in a corpus of similar manuscripts is to identify which ones correspond to each other. This image collation task is daunting for manuscripts separated by many lost copies, spreading over centuries, which might have been completely re-organized and greatly modified to adapt to novel knowledge or belief and include hundreds of illustrations. Our contributions in this paper are threefold. First, we introduce the task of illustration collation and a large annotated public dataset to evaluate solutions, including 6 manuscripts of 2 different texts with more than 2 000 illustrations and 1 200 annotated correspondences. Second, we analyze state of the art similarity measures for this task and show that they succeed in simple cases but struggle for large manuscripts when the illustrations have undergone very significant changes and are discriminated only by fine details. Finally, we show clear evidence that significant performance boosts can be expected by exploiting cycle-consistent correspondences. Our code and data are available on http://imagine.enpc.fr/\textasciitilde shenx/ImageCollation.},
+  archiveprefix = {arxiv},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/C5FXWJU5/Kaoua et al. - 2021 - Image Collation Matching illustrations in manuscr.pdf;/home/jade/snap/zotero-snap/common/Zotero/storage/SKLRGTNM/2108.html}
+}
+
 @article{klinkeBigImageData2016,
   title = {Big {{Image Data}} within the {{Big Picture}} of {{Art History}}},
   author = {Klinke, Harald},
@@ -919,6 +1082,13 @@
   url = {https://leibniz-berlin.bbaw.de/de/leibniz-online},
   urldate = {2023-09-01},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/D4ZUYBUE/leibniz-online.html}
+}
+
+@misc{LeibnizVIIILaTeX_TEIa,
+  title = {{{LeibnizVIII-LaTeX}}\_{{TEI}}},
+  url = {https://github.com/telota/LeibnizVIII-LaTeX_TEI/tree/main},
+  urldate = {2023-09-01},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/7ET932DK/main.html}
 }
 
 @misc{linComprehensiveReviewImage2023,
@@ -1183,6 +1353,24 @@
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/IDRCS5EN/digitizing-disparity-in-the-museum-the-object-based-research-in-the-tokyo-national-museum.html}
 }
 
+@misc{salehAutomatedDiscoveryArtistic2014b,
+  title = {Toward {{Automated Discovery}} of {{Artistic Influence}}},
+  author = {Saleh, Babak and Abe, Kanako and Arora, Ravneet Singh and Elgammal, Ahmed},
+  year = {2014},
+  month = aug,
+  number = {arXiv:1408.3218},
+  eprint = {1408.3218},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/1408.3218},
+  urldate = {2023-09-02},
+  abstract = {Considering the huge amount of art pieces that exist, there is valuable information to be discovered. Examining a painting, an expert can determine its style, genre, and the time period that the painting belongs. One important task for art historians is to find influences and connections between artists. Is influence a task that a computer can measure? The contribution of this paper is in exploring the problem of computer-automated suggestion of influences between artists, a problem that was not addressed before in a general setting. We first present a comparative study of different classification methodologies for the task of fine-art style classification. A two-level comparative study is performed for this classification problem. The first level reviews the performance of discriminative vs. generative models, while the second level touches the features aspect of the paintings and compares semantic-level features vs. low-level and intermediate-level features present in the painting. Then, we investigate the question "Who influenced this artist?" by looking at his masterpieces and comparing them to others. We pose this interesting question as a knowledge discovery problem. For this purpose, we investigated several painting-similarity and artist-similarity measures. As a result, we provide a visualization of artists (Map of Artists) based on the similarity between their works},
+  archiveprefix = {arxiv},
+  langid = {english},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/NDKQI74Z/Saleh et al. - 2014 - Toward Automated Discovery of Artistic Influence.pdf}
+}
+
 @misc{sandyChoosingDjangoFlask,
   title = {Choosing between {{Django}}, {{Flask}}, and {{FastAPI}}},
   author = {Sandy, James},
@@ -1243,6 +1431,24 @@
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/P9P2B3B5/training-the-yolov5-object-detector-on-a-custom-dataset.html}
 }
 
+@misc{shenDiscoveringVisualPatterns2019,
+  title = {Discovering {{Visual Patterns}} in {{Art Collections}} with {{Spatially-consistent Feature Learning}}},
+  author = {Shen, Xi and Efros, Alexei A. and Aubry, Mathieu},
+  year = {2019},
+  month = mar,
+  number = {arXiv:1903.02678},
+  eprint = {1903.02678},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1903.02678},
+  url = {http://arxiv.org/abs/1903.02678},
+  urldate = {2023-09-02},
+  abstract = {Our goal in this paper is to discover near duplicate patterns in large collections of artworks. This is harder than standard instance mining due to differences in the artistic media (oil, pastel, drawing, etc), and imperfections inherent in the copying process. The key technical insight is to adapt a standard deep feature to this task by fine-tuning it on the specific art collection using self-supervised learning. More specifically, spatial consistency between neighbouring feature matches is used as supervisory fine-tuning signal. The adapted feature leads to more accurate style-invariant matching, and can be used with a standard discovery approach, based on geometric verification, to identify duplicate patterns in the dataset. The approach is evaluated on several different datasets and shows surprisingly good qualitative discovery results. For quantitative evaluation of the method, we annotated 273 near duplicate details in a dataset of 1587 artworks attributed to Jan Brueghel and his workshop. Beyond artwork, we also demonstrate improvement on localization on the Oxford5K photo dataset as well as on historical photograph localization on the Large Time Lags Location (LTLL) dataset.},
+  archiveprefix = {arxiv},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/YQKENLM9/Shen et al. - 2019 - Discovering Visual Patterns in Art Collections wit.pdf;/home/jade/snap/zotero-snap/common/Zotero/storage/JM7FTDTS/1903.html}
+}
+
 @misc{shenLargeScaleHistoricalWatermark2019,
   title = {Large-{{Scale Historical Watermark Recognition}}: Dataset and a New Consistency-Based Approach},
   shorttitle = {Large-{{Scale Historical Watermark Recognition}}},
@@ -1274,13 +1480,6 @@
   langid = {english},
   keywords = {ml},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/T7JUD62Y/computer-vision-deep-learning-pt1.html}
-}
-
-@misc{TelotaLeibnizVIIILaTeX_TEIa,
-  title = {Telota/{{LeibnizVIII-LaTeX}}\_{{TEI}}},
-  url = {https://github.com/telota/LeibnizVIII-LaTeX_TEI/tree/main},
-  urldate = {2023-09-01},
-  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/7ET932DK/main.html}
 }
 
 @misc{ultralyticsUltralyticsYOLOv8Docs,
@@ -1323,4 +1522,22 @@
   url = {https://dev.gdmrdigital.com/},
   urldate = {2023-08-29},
   file = {/home/jade/snap/zotero-snap/common/Zotero/storage/255B825I/dev.gdmrdigital.com.html}
+}
+
+@misc{yoonImagetoImageRetrievalLearning2020b,
+  title = {Image-to-{{Image Retrieval}} by {{Learning Similarity}} between {{Scene Graphs}}},
+  author = {Yoon, Sangwoong and Kang, Woo Young and Jeon, Sungwook and Lee, SeongEun and Han, Changjin and Park, Jonghun and Kim, Eun-Sol},
+  year = {2020},
+  month = dec,
+  number = {arXiv:2012.14700},
+  eprint = {2012.14700},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  url = {http://arxiv.org/abs/2012.14700},
+  urldate = {2023-09-02},
+  abstract = {As a scene graph compactly summarizes the high-level content of an image in a structured and symbolic manner, the similarity between scene graphs of two images reflects the relevance of their contents. Based on this idea, we propose a novel approach for image-to-image retrieval using scene graph similarity measured by graph neural networks. In our approach, graph neural networks are trained to predict the proxy image relevance measure, computed from humanannotated captions using a pre-trained sentence similarity model. We collect and publish the dataset for image relevance measured by human annotators to evaluate retrieval algorithms. The collected dataset shows that our method agrees well with the human perception of image similarity than other competitive baselines.},
+  archiveprefix = {arxiv},
+  langid = {english},
+  keywords = {ml},
+  file = {/home/jade/snap/zotero-snap/common/Zotero/storage/HSLNBWAE/Yoon et al. - 2020 - Image-to-Image Retrieval by Learning Similarity be.pdf}
 }
